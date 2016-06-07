@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607121809) do
+ActiveRecord::Schema.define(version: 20160607131544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,10 @@ ActiveRecord::Schema.define(version: 20160607121809) do
     t.string   "last_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
+
+  add_index "delivery_infos", ["user_id"], name: "index_delivery_infos_on_user_id", using: :btree
 
   create_table "order_lines", force: :cascade do |t|
     t.string   "size"
@@ -36,14 +39,24 @@ ActiveRecord::Schema.define(version: 20160607121809) do
     t.string   "instruction"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "order_id"
+    t.integer  "product_id"
   end
+
+  add_index "order_lines", ["order_id"], name: "index_order_lines_on_order_id", using: :btree
+  add_index "order_lines", ["product_id"], name: "index_order_lines_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.boolean  "payment"
+    t.integer  "delivery_info_id"
+    t.integer  "user_id"
   end
+
+  add_index "orders", ["delivery_info_id"], name: "index_orders_on_delivery_info_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -69,7 +82,10 @@ ActiveRecord::Schema.define(version: 20160607121809) do
     t.boolean  "admin"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "user_id"
   end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "specifications", force: :cascade do |t|
     t.string   "code_article"
@@ -78,7 +94,10 @@ ActiveRecord::Schema.define(version: 20160607121809) do
     t.integer  "quantity"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "product_id"
   end
+
+  add_index "specifications", ["product_id"], name: "index_specifications_on_product_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -105,4 +124,11 @@ ActiveRecord::Schema.define(version: 20160607121809) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "delivery_infos", "users"
+  add_foreign_key "order_lines", "orders"
+  add_foreign_key "order_lines", "products"
+  add_foreign_key "orders", "delivery_infos"
+  add_foreign_key "orders", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "specifications", "products"
 end
