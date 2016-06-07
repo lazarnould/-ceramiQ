@@ -1,4 +1,84 @@
 Rails.application.routes.draw do
+  get 'specifications/index'
+
+  get 'specifications/show'
+
+  get 'specifications/new'
+
+  get 'specifications/create'
+
+  get 'specifications/edit'
+
+  get 'specifications/update'
+
+  get 'specifications/destroy'
+
+  get 'products/index'
+
+  get 'products/show'
+
+  get 'products/new'
+
+  get 'products/create'
+
+  get 'products/edit'
+
+  get 'products/update'
+
+  get 'products/destroy'
+
+  get 'order_lines/index'
+
+  get 'order_lines/show'
+
+  get 'order_lines/new'
+
+  get 'order_lines/create'
+
+  get 'order_lines/edit'
+
+  get 'order_lines/update'
+
+  get 'order_lines/destroy'
+
+  get 'orders/index'
+
+  get 'orders/show'
+
+  get 'orders/new'
+
+  get 'orders/create'
+
+  get 'orders/edit'
+
+  get 'orders/update'
+
+  get 'orders/destroy'
+
+  get 'delivery_infos/index'
+
+  get 'delivery_infos/show'
+
+  get 'delivery_infos/new'
+
+  get 'delivery_infos/create'
+
+  get 'delivery_infos/edit'
+
+  get 'delivery_infos/update'
+
+  get 'profile/index'
+
+  get 'profile/show'
+
+  get 'profile/new'
+
+  get 'profile/create'
+
+  get 'profile/edit'
+
+  get 'profile/update'
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root to: 'pages#home'
