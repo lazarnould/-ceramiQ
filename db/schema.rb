@@ -11,10 +11,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606153915) do
+ActiveRecord::Schema.define(version: 20160607121809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delivery_infos", force: :cascade do |t|
+    t.string   "country"
+    t.string   "city"
+    t.integer  "zip_code"
+    t.string   "street_name"
+    t.integer  "street_number"
+    t.integer  "phone_number"
+    t.string   "phone_prefix"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "order_lines", force: :cascade do |t|
+    t.string   "size"
+    t.integer  "quantity"
+    t.string   "instruction"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "payment"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.string   "gender"
+    t.string   "category"
+    t.string   "description"
+    t.string   "season"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "country"
+    t.string   "city"
+    t.integer  "zip_code"
+    t.string   "street_name"
+    t.integer  "street_number"
+    t.integer  "phone_number"
+    t.string   "phone_number_prefix"
+    t.boolean  "admin"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "specifications", force: :cascade do |t|
+    t.string   "code_article"
+    t.string   "color"
+    t.string   "size"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
