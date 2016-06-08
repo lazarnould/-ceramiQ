@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   resources :profiles
 
-  resources :specifications
-
-  resources :products
+  resources :products do
+    resources :specifications, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  end
 
   resources :order_lines
 

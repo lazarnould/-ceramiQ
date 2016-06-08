@@ -19,8 +19,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
-    @profile.save
-    redirect_to profile_path(@profile)
+    if @profile.save
+      redirect_to profile_path(@profile)
+    else
+      flash[:notice] = "A problem occured, try again"
+    end
   end
 
   def edit
