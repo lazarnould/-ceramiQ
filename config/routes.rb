@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :profiles
+
   resources :specifications
 
   resources :products
@@ -9,8 +11,6 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :delivery_infos
-
-  resources :profile
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
