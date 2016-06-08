@@ -15,8 +15,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to product_path(@product)
+    if @product.save
+      flash[:notice] = "You've add #{@product.name} on the database, add some specifications to put it on sale"
+      redirect_to new_product_specification(@product)
+    else
+      flash[:notice] = "A problem occured, try again"
+      render :new
+    end
   end
 
   def edit
@@ -28,7 +33,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product
+    @product.destroy
+    redirect_to root_path
   end
 
   private
