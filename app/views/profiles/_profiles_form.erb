@@ -1,4 +1,4 @@
-<%= simple_form_for(@profile) do |f| %>
+ <%= simple_form_for(@profile) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :first_name %>
@@ -8,11 +8,9 @@
   <%= f.input :zip_code %>
   <%= f.input :street_name %>
   <%= f.input :street_number %>
-  <%= f.input :phone_number %>
   <%= f.input :phone_number_prefix %>
+  <%= f.input :phone_number %>
 
 
   <%= f.button :submit %>
 <% end %>
-
-
