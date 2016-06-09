@@ -1,7 +1,7 @@
 class SpecificationsController < ApplicationController
 
+  before_action :find_product, only: [:show, :new, :create, :edit, :update]
   before_action :find_specification, only: [:show, :edit, :update]
-  before_action :find_product, only: [:new, :create, :edit, :update]
 
   def index
     @specifications = Specification.all
