@@ -23,6 +23,7 @@ class ProfilesController < ApplicationController
       redirect_to profile_path(@profile)
     else
       flash[:notice] = "A problem occured, try again"
+      render :new
     end
   end
 
