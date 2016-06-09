@@ -1,2 +1,12 @@
-<h1>Specifications#edit</h1>
-<p>Find me in app/views/specifications/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+
+     <h3>Edit this Product Specifications</h3>
+     <%= render 'specs_form' %>
+     <hr>
+     <%= link_to 'Return to product', product_path(@specification.product_id) %>
+
+   </div>
+ </div>
+</div>
