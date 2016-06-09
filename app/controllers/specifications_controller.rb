@@ -1,6 +1,7 @@
 class SpecificationsController < ApplicationController
 
-  before_action :find_specification, only: [:show, :edit, :update, :destroy]
+  before_action :find_specification, only: [:show, :edit, :update]
+  before_action :find_product, only: [:new, :create, :edit, :update]
 
   def index
     @specifications = Specification.all
@@ -14,7 +15,6 @@ class SpecificationsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @specification = Specification.new(specification_params)
     @specification.product = @product
 
@@ -35,13 +35,12 @@ class SpecificationsController < ApplicationController
     redirect_to product_specification_path(@specification.product, @specification)
   end
 
-  def destroy
-    @specification.destroy
-    flash[:notice] = "Specification has been deleted"
-    redirect_to root_path
-  end
 
   private
+
+  def find_product
+    @product = Product.find(params[:product_id])
+  end
 
   def find_specification
     @specification = Specification.find(params[:id])

@@ -1,0 +1,11 @@
+ <%= simple_form_for [@product, @specification] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :code_article %>
+  <%= f.input :color %>
+  <%= f.input :size %>
+  <%= f.input :quantity %>
+
+  <%= f.button :submit %>
+<% end %>
+

@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#home'
+
   resources :profiles
 
   resources :products do
-    resources :specifications, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :specifications
   end
 
-  resources :order_lines
-
-  resources :orders
+  resources :orders do
+    resources :order_lines
+  end
 
   resources :delivery_infos
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root to: 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
