@@ -1,0 +1,16 @@
+ <%= simple_form_for(@delivery_info) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :country %>
+  <%= f.input :city %>
+  <%= f.input :zip_code %>
+  <%= f.input :street_name %>
+  <%= f.input :street_number %>
+  <%= f.input :phone_prefix %>
+  <%= f.input :phone_number %>
+
+
+  <%= f.button :submit %>
+<% end %>
