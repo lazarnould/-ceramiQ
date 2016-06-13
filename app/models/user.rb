@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   has_many :delivery_infos
   has_one :profile, dependent: :destroy
 
-
+  validates :email, presence: true, format: {
+   with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+   message: "Invalid email"
+ }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
