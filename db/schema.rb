@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609105939) do
+ActiveRecord::Schema.define(version: 20160613110749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20160609105939) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.integer  "order_id"
   end
 
+  add_index "delivery_infos", ["order_id"], name: "index_delivery_infos_on_order_id", using: :btree
   add_index "delivery_infos", ["user_id"], name: "index_delivery_infos_on_user_id", using: :btree
 
   create_table "order_lines", force: :cascade do |t|
@@ -49,14 +51,12 @@ ActiveRecord::Schema.define(version: 20160609105939) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean  "payment"
-    t.integer  "delivery_info_id"
     t.integer  "user_id"
   end
 
-  add_index "orders", ["delivery_info_id"], name: "index_orders_on_delivery_info_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
@@ -125,10 +125,10 @@ ActiveRecord::Schema.define(version: 20160609105939) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "delivery_infos", "orders"
   add_foreign_key "delivery_infos", "users"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
-  add_foreign_key "orders", "delivery_infos"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "specifications", "products"
