@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :orders
+  has_many :delivery_infos
+  has_one :profile, dependent: :destroy
+
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   def self.find_for_facebook_oauth(auth)
