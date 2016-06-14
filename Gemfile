@@ -19,6 +19,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'country_select'
 gem 'autoprefixer-rails'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'binding_of_caller'
