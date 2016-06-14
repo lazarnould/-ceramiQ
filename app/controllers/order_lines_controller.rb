@@ -16,7 +16,7 @@ class OrderLinesController < ApplicationController
     @orderline = @order.order_lines.build(order_line_params)
     @product = Product.find(params[:product_id])
     if  !@order
-      @order = Order.create(user: current_user, state: 'pending', amount: @orderline.product.price)
+      @order = Order.create(user: current_user, state: 'pending')
     end
     @orderline.product_id = params[:product_id]
     if @orderline.quantity > @orderline.product.specification.quantity

@@ -5,11 +5,14 @@ class OrdersController < ApplicationController
       flash[:notice] = "You have no orders yet"
     else
       @orders .each do |order|
-        subtotal = order.make_subtotal
-      end
-      # @pricing = @order.size_and_price
-      @order_lines.each do |order_line|
-        order_line.product.price
+        order.orderlines.each do |orderline|
+          @quantity = orderline.quantity
+          @product = orderline.product.name
+          @product_size = orderline.product.specification.size
+          @product_color = orderline.product.specification.color
+          @price = orderliner.product.price
+        end
+        @subtotal = order.make_subtotal
       end
     end
   end
@@ -22,7 +25,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
   end
 
   def edit
@@ -31,12 +33,24 @@ class OrdersController < ApplicationController
   def update
     @order = current_user.orders.find_by_id(params[:id])
     @subtotal = @order.make_subtotal
-    @order.delivery_infos
+    @order.delivery_infos.update(delivery_infos_paramss)
   end
 
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to root_path
+  end
+
+  def current_order
+    orders.last ? orders.last : nil
+  end
+
+# checkout to add
+
+
+  private
+  def delivery_infos_params
+    params.require(:delivery_info).permit(:country, :city, :zip_code, :street_name, :street_number, :phone_number, :phone_prefix, :first_name, :last_name)
   end
 end
