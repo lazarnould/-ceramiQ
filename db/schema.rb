@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613110749) do
+ActiveRecord::Schema.define(version: 20160614102611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,24 +50,25 @@ ActiveRecord::Schema.define(version: 20160613110749) do
   add_index "order_lines", ["product_id"], name: "index_order_lines_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "payment"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "user_id"
+    t.string   "state"
+    t.integer  "amount_cents", default: 0, null: false
+    t.json     "payment"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price"
     t.string   "gender"
     t.string   "category"
     t.string   "description"
     t.string   "season"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "price_cents", default: 0, null: false
   end
 
   create_table "profiles", force: :cascade do |t|

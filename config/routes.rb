@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
+
   root to: 'pages#home'
 
   resources :profiles
 
   resources :products do
     resources :specifications
+    resources :order_lines
   end
 
-  resources :orders do
-    resources :order_lines
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
   end
 
   resources :delivery_infos

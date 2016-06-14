@@ -13,11 +13,11 @@ class OrderLinesController < ApplicationController
 
   def create
     @order = current_user.orders.last
-    if  !@order
-      @order = Order.create(user: current_user)
-    end
-    @product = Product.find(params[:product_id])
     @orderline = @order.order_lines.build(order_line_params)
+    @product = Product.find(params[:product_id])
+    if  !@order
+      @order = Order.create(user: current_user, state: 'pending', amount: @orderline.product.price)
+    end
     @orderline.product_id = params[:product_id]
     if @orderline.quantity > @orderline.product.specification.quantity
       flash[:notice] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
@@ -31,7 +31,7 @@ class OrderLinesController < ApplicationController
       flash[:notice] = "#{order_line_params["quantity"]} #{@item.name} has been added to your basket"
       redirect_to order_path(@order)
     else
-      @product = Product.find(params[:item_id])
+      @product = Product.find(params[:product_id])
       @orderline = @item.order_lines.new
       render :new
       #redirect_to new_store_item_order_line_path(@store, params[:item_id])

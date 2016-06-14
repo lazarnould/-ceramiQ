@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   has_many :order_lines
   has_one :delivery_info
 
+  monetize :amount_cents
+
   def make_subtotal
     subtotal = 0
     self.order_lines.each do |order_line|
@@ -10,4 +12,5 @@ class Order < ActiveRecord::Base
     end
     subtotal
   end
+
 end

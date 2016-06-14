@@ -15,12 +15,14 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.where(state: 'paid').find(params[:id])
   end
 
   def new
   end
 
   def create
+
   end
 
   def edit
