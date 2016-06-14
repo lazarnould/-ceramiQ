@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'autoprefixer-rails'
 gem 'cloudinary'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'binding_of_caller'
