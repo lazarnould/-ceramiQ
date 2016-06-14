@@ -1,6 +1,6 @@
 <h1> <%= @product.name %></h1>
-
 <p>Amount: <%= humanized_money_with_symbol(@product.price) %></p>
+<%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
 
 <%= form_tag orders_path do %>
   <%= hidden_field_tag 'product_id', @product.id %>
