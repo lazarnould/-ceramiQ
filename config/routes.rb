@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :specifications
   end
 
+  resources :orders, only: [:show, :create]
+
   resources :orders do
     resources :order_lines
   end
