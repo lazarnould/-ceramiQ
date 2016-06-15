@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-
   root to: 'pages#home'
 
   resources :profiles
 
   resources :products do
-    resources :specifications
-    resources :order_lines
+    resources :order_lines, except: [:destroy, :show, :index]
+    resources :specifications do
+      resources :images, only: [:create, :update]
+    end
   end
 
   resources :orders, only: [:show, :create] do
