@@ -13,11 +13,11 @@ class OrderLinesController < ApplicationController
 
   def create
     @order = current_user.orders.last
-    @orderline = @order.order_lines.build(order_line_params)
-    @product = Product.find(params[:product_id])
     if  !@order
       @order = Order.create(user: current_user, state: 'pending')
     end
+    @orderline = @order.order_lines.build(order_line_params)
+    @product = Product.find(params[:product_id])
     @orderline.product_id = params[:product_id]
     if @orderline.quantity > @orderline.product.specification.quantity
       flash[:notice] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
