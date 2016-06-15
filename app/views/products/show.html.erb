@@ -8,3 +8,12 @@
 <% end %>
 
 <%= link_to "delete", product_path(@product.id), method: :delete %>
+
+<p>Available in:</p>
+<% @product.specifications.each do |spec| %>
+  <ul class="list-inline">
+    <li> spec.color </li>
+    <li>spec.size</li>
+  </ul>
+
+  <%end%>

@@ -1,4 +1,5 @@
 <h1>Purchase of ceramiQ <%= @order.orderline.product.id %></h1>
+
 <%= form_tag order_payments_path(@order) do %>
   <article>
     <label class="amount">
