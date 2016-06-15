@@ -1,20 +1,6 @@
 class OrdersController < ApplicationController
   def index
     @orders = current_user.orders
-    if !@orders
-      flash[:notice] = "You have no orders yet"
-    else
-      @orders .each do |order|
-        order.orderlines.each do |orderline|
-          @quantity = orderline.quantity
-          @product = orderline.product.name
-          @product_size = orderline.product.specification.size
-          @product_color = orderline.product.specification.color
-          @price = orderliner.product.price
-        end
-        @subtotal = order.make_subtotal
-      end
-    end
   end
 
   def show
