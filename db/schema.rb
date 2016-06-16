@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615091342) do
+ActiveRecord::Schema.define(version: 20160616115910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,11 +99,19 @@ ActiveRecord::Schema.define(version: 20160615091342) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "sizes", force: :cascade do |t|
+    t.string   "size"
+    t.integer  "quantity"
+    t.integer  "specification_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "sizes", ["specification_id"], name: "index_sizes_on_specification_id", using: :btree
+
   create_table "specifications", force: :cascade do |t|
     t.string   "code_article"
     t.string   "color"
-    t.string   "size"
-    t.integer  "quantity"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "product_id"
@@ -143,5 +151,6 @@ ActiveRecord::Schema.define(version: 20160615091342) do
   add_foreign_key "order_lines", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "sizes", "specifications"
   add_foreign_key "specifications", "products"
 end
