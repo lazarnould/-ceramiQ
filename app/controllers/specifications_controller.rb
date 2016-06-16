@@ -8,6 +8,8 @@ class SpecificationsController < ApplicationController
   end
 
   def show
+    @image = Image.new
+    @size = Size.new
   end
 
   def new
@@ -19,7 +21,7 @@ class SpecificationsController < ApplicationController
     @specification.product = @product
 
     if @specification.save
-      flash[:notice] = "#{@specification.quantity} #{@specification.product} in #{@specification.color} are now on sale"
+      flash[:notice] = "#{@specification.product.name} in #{@specification.color} is now created, please add some stock"
       redirect_to product_specification_path(@specification.product, @specification)
     else
       flash[:notice] = "A problem occured, Please try again"
@@ -47,6 +49,6 @@ class SpecificationsController < ApplicationController
   end
 
   def specification_params
-    params.require(:specification).permit(:code_article, :color, :size, :quantity)
+    params.require(:specification).permit(:code_article, :color)
   end
 end
