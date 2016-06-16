@@ -1,2 +1,27 @@
-<h1>Specifications#show</h1>
-<p>Find me in app/views/specifications/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+    <h1> <%= @product.name %></h1>
+    <h4>Code Article: <%= @specification.code_article %></h4>
+    <h4>Color: <%= @specification.color %></h4>
+   </div>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+     <h3>Add an Image</h3>
+     <%= render 'images/img_form' %>
+   </div>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+     <h3>Add the Quantity by Size</h3>
+     <%= render 'sizes/sizes_form' %>
+   </div>
+ </div>
+</div>

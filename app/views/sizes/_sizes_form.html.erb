@@ -1,4 +1,4 @@
- <%= simple_form_for(@specification, @size) do |f| %>
+ <%= simple_form_for [@product, @specification, @size] do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :size, collection: ["XS", "S", "M", "L", "XL", "XXL"] %>
