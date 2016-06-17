@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :order_lines, except: [:destroy, :show, :index]
     resources :specifications do
       resources :images, only: [:create, :update]
-      resources :sizes, only:[:create, :update]
     end
   end
 
