@@ -49,6 +49,6 @@ class SpecificationsController < ApplicationController
   end
 
   def specification_params
-    params.require(:specification).permit(:code_article, :color)
+    params.require(:specification).permit(:code_article, :color, :size, :quantity)
   end
 end
