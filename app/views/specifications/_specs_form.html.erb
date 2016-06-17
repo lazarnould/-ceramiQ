@@ -1,8 +1,10 @@
- <%= simple_form_for( [@product, @specification]) do |f| %>
+ <%= simple_form_for [@product, @specification] do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :code_article %>
   <%= f.input :color %>
+  <%= f.input :size, collection: ["XS", "S", "M", "L", "XL", "XXL"] %>
+  <%= f.input :quantity %>
 
   <%= f.button :submit %>
 <% end %>
