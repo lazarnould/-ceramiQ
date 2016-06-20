@@ -9,9 +9,17 @@
   <%end%>
   <% real_colors = colors.uniq %>
 
+  <% real_sizes = []%>
+  <% @product.specifications.each do |spec| %>
+    <% real_sizes << spec.size %>
+  <%end%>
+
+
+
+
 <p>Choose your options:</p>
 
-  <!--   <%= form_tag product_specification_order_lines_path(@product) do %>
+  <!--   <%= form_tag product_specification_order_lines_path(@product, @specification) do %>
       <%= simple_form_for [@product, @orderline] do |f| %>
         <%= f.error_notification %>
 
