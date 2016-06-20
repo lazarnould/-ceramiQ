@@ -7,8 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @orderline = @product.order_lines.new
-    @orderline.product = @product.specification(specification_params)
+
   end
 
   def new
