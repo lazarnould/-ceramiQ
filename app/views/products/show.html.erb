@@ -2,18 +2,32 @@
 <p>Amount: <%= humanized_money_with_symbol(@product.price_cents) %></p>
 <%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
 
-<%= form_tag orders_path do %>
-  <%= hidden_field_tag 'product_id', @product.id %>
-  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-<% end %>
 
-<%= link_to "delete", product_path(@product.id), method: :delete %>
-
-<p>Available in:</p>
-<% @product.specifications.each do |spec| %>
-  <ul class="list-inline">
-    <li> <%= spec.color %> </li>
-    <li> <%= spec.sizes.size %> </li>
-  </ul>
-
+  <% colors = []%>
+  <% @product.specifications.each do |spec| %>
+    <% colors << spec.color %>
   <%end%>
+  <% real_colors = colors.uniq %>
+
+<p>Choose your options:</p>
+
+    <%= form_tag product_order_lines_path(@product) do %>
+      <%= simple_form_for [@product, @orderline] do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :size %>
+        <%= f.input :quantity %>
+        <%= f.input :instruction %>
+
+        <%= f.button :submit %>
+      <% end %>
+
+
+      <%= hidden_field_tag 'product_id', @product.id %>
+      <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+    <% end %>
+
+    <%= link_to "delete", product_path(@product.id), method: :delete %>
+
+
+

@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @orderline = @product.order_lines.new
+    @orderline.product = @product.specification(specification_params)
   end
 
   def new
@@ -45,6 +47,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :gender, :price_cents, :category, :description, :season, :photo, :photo_cache)
+  end
+
+  def specification_params
+    params.require(:specification).permit(:code_article, :color, :size, :quantity)
   end
 
 end
