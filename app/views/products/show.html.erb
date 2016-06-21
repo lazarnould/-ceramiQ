@@ -20,7 +20,7 @@
 
 <!-- Choose the sizes in function of the color -->
       <% real_sizes = []%>
-      <% @product.specifications.where(color: params[:color]).each do |spec| %>
+      <% @product.specifications.each do |spec| %>
         <% real_sizes << spec.size %>
       <%end%>
 
