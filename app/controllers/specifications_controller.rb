@@ -9,7 +9,6 @@ class SpecificationsController < ApplicationController
 
   def show
     @image = Image.new
-    @size = Size.new
   end
 
   def new

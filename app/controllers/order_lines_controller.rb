@@ -19,8 +19,10 @@ class OrderLinesController < ApplicationController
     @orderline = @order.order_lines.build(order_line_params)
     @product = Product.find(params[:product_id])
     @orderline.product_id = params[:product_id]
-    @orderline.specification = Specification.find(product_id: @orderline.product, size: @orderline.size, color: @orderline.color)
-    if @orderline.quantity > @orderline.product.specification.quantity
+    @orderline.price = @product.price_cents
+    @specification = @product.specifications.find_by(size: @orderline.size, color: @orderline.color).id
+    @orderline.specification_id = @specification
+    if @orderline.quantity > @orderline.specification.quantity
       flash[:notice] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
       render :new
     elsif @orderline.quantity == 0
@@ -29,8 +31,8 @@ class OrderLinesController < ApplicationController
     end
 
     if @orderline.save
-      flash[:notice] = "#{order_line_params["quantity"]} #{@item.name} has been added to your basket"
-      redirect_to order_path(@order)
+      flash[:notice] = "#{order_line_params["quantity"]} #{@product.name} has been added to your basket"
+      redirect_to product_path(@product)
     else
       @product = Product.find(params[:product_id])
       @orderline = @item.order_lines.new
