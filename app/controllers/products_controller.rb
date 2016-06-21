@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @orderline = OrderLine.new
   end
 
   def new
