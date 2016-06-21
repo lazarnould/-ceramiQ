@@ -1,5 +1,5 @@
 class OrderLine < ActiveRecord::Base
   belongs_to :order
-  has_one :specification
-  has_one :product, through: :specification
+  belongs_to :product
+  belongs_to :specification, through: :product
 end
