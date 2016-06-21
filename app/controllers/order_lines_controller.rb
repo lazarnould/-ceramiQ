@@ -19,6 +19,7 @@ class OrderLinesController < ApplicationController
     @orderline = @order.order_lines.build(order_line_params)
     @product = Product.find(params[:product_id])
     @orderline.product_id = params[:product_id]
+    @orderline.specification = Specification.find(product_id: @orderline.product, size: @orderline.size, color: @orderline.color)
     if @orderline.quantity > @orderline.product.specification.quantity
       flash[:notice] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
       render :new
@@ -54,7 +55,7 @@ class OrderLinesController < ApplicationController
   private
 
   def order_line_params
-    params.require(:order_line).permit(:size, :quantity)
+    params.require(:order_line).permit(:size, :quantity, :color)
   end
 
   def find_order_line

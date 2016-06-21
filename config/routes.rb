@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :profiles, except: [:destroy]
 
   resources :products do
+    resources :order_lines, except: [:destroy, :show, :index]
     resources :specifications do
-      resources :order_lines, except: [:destroy, :show, :index]
       resources :images, only: [:create, :update]
     end
   end

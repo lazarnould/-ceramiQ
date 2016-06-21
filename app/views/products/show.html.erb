@@ -3,39 +3,46 @@
 <%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
 
 
-  <% colors = []%>
-  <% @product.specifications.each do |spec| %>
-    <% colors << spec.color %>
-  <%end%>
-  <% real_colors = colors.uniq %>
-
-  <% real_sizes = []%>
-  <% @product.specifications.each do |spec| %>
-    <% real_sizes << spec.size %>
-  <%end%>
-
-
-
 
 <p>Choose your options:</p>
 
-  <!--   <%= form_tag product_specification_order_lines_path(@product, @specification) do %>
-      <%= simple_form_for [@product, @orderline] do |f| %>
-        <%= f.error_notification %>
+  <%= form_tag product_order_lines_path(@product, @order) do %>
+    <%= simple_form_for [@product, @orderline] do |f| %>
+      <%= f.error_notification %>
 
-        <%= f.input :size %>
-        <%= f.input :quantity %>
-        <%= f.input :instruction %>
+      <% colors = []%>
+      <% @product.specifications.each do |spec| %>
+        <% colors << spec.color %>
+      <%end%>
+      <% real_colors = colors.uniq %>
 
-        <%= f.button :submit %>
-      <% end %>
+      <%= f.input :color, collection: real_colors %>
+
+<!-- Choose the sizes in function of the color -->
+      <% real_sizes = []%>
+      <% @product.specifications.where(color: params[:color]).each do |spec| %>
+        <% real_sizes << spec.size %>
+      <%end%>
 
 
-      <%= hidden_field_tag 'product_id', @product.id %>
-      <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-    <% end %> -->
 
-    <%= link_to "delete", product_path(@product.id), method: :delete %>
+
+
+
+      <%= f.input :size, collection: real_sizes %>
+      <%= f.input :quantity %>
+
+      <%= f.button :submit %>
+    <% end %>
+
+
+    <%= hidden_field_tag 'product_id', @product.id %>
+    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
+
+
+
+<%= link_to "delete", product_path(@product.id), method: :delete %>
 
 
 
