@@ -22,21 +22,23 @@ class OrderLinesController < ApplicationController
     @orderline.price = @product.price_cents
     @specification = @product.specifications.find_by(size: @orderline.size, color: @orderline.color).id
     @orderline.specification_id = @specification
+
     if @orderline.quantity > @orderline.specification.quantity
-      flash[:notice] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
-      render :new
+      flash[:alert] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
+      return redirect_to product_path(@product)
     elsif @orderline.quantity == 0
-      flash[:notice] = "Please select a quantity"
-      render :new
+      flash[:alert] = "Please select a quantity"
+      return redirect_to product_path(@product)
     end
 
     if @orderline.save
       flash[:notice] = "#{order_line_params["quantity"]} #{@product.name} has been added to your basket"
       redirect_to product_path(@product)
     else
+      flash[:alert] = "A problem occured, try againalert"
       @product = Product.find(params[:product_id])
       @orderline = @item.order_lines.new
-      render :new
+      redirect_to product_path(@product)
       #redirect_to new_store_item_order_line_path(@store, params[:item_id])
     end
   end
