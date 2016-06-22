@@ -24,7 +24,7 @@ class OrderLinesController < ApplicationController
     @orderline.specification_id = @specification
 
     if @orderline.quantity > @orderline.specification.quantity
-      flash[:alert] = "The quantity you've ordered of #{@orderline.product} exceed the stock"
+      flash[:alert] = "The quantity you've ordered of #{@orderline.product.name} exceed the stock"
       return redirect_to product_path(@product)
     elsif @orderline.quantity == 0
       flash[:alert] = "Please select a quantity"
