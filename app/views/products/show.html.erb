@@ -1,48 +1,49 @@
-<h1> <%= @product.name %></h1>
-<p>Amount: <%= humanized_money_with_symbol(@product.price_cents) %></p>
-<%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1> <%= @product.name %></h1>
+      <p>Amount: <%= humanized_money_with_symbol(@product.price_cents) %></p>
+      <%= cl_image_tag @product.photo, height: 300, width: 400, crop: :fill %>
 
 
 
-<p>Choose your options:</p>
+      <p>Choose your options:</p>
 
-  <%= form_tag product_order_lines_path(@product, @order) do %>
-    <%= simple_form_for [@product, @orderline] do |f| %>
-      <%= f.error_notification %>
+      <%= form_tag product_order_lines_path(@product, @order) do %>
+        <%= simple_form_for [@product, @orderline] do |f| %>
+          <%= f.error_notification %>
 
-      <% colors = []%>
-      <% @product.specifications.each do |spec| %>
-        <% colors << spec.color %>
-      <%end%>
-      <% real_colors = colors.uniq %>
+          <% colors = []%>
+          <% @product.specifications.each do |spec| %>
+            <% colors << spec.color %>
+          <%end%>
+          <% real_colors = colors.uniq %>
 
-      <%= f.input :color, collection: real_colors %>
+          <%= f.input :color, collection: real_colors %>
 
-<!-- Choose the sizes in function of the color -->
-      <% real_sizes = []%>
-      <% @product.specifications.each do |spec| %>
-        <% real_sizes << spec.size %>
-      <%end%>
+        <!-- Choose the sizes in function of the color -->
+          <% real_sizes = []%>
+          <% @product.specifications.each do |spec| %>
+            <% real_sizes << spec.size %>
+          <%end%>
 
+          <%= f.input :size, collection: real_sizes %>
+          <%= f.input :quantity %>
 
-
-
-
-
-      <%= f.input :size, collection: real_sizes %>
-      <%= f.input :quantity %>
-
-      <%= f.button :submit %>
-    <% end %>
+          <%= f.button :submit %>
+        <% end %>
 
 
-    <%= hidden_field_tag 'product_id', @product.id %>
-    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-  <% end %>
+        <%= hidden_field_tag 'product_id', @product.id %>
+        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+      <% end %>
 
 
 
-<%= link_to "delete", product_path(@product.id), method: :delete %>
+      <%= link_to "delete", product_path(@product.id), method: :delete %>
 
+    </div>
+  </div>
+</div>
 
 
