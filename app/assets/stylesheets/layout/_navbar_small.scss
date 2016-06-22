@@ -2,13 +2,14 @@
   height: 39px;
   display: flex;
   min-width: 100%;
-  background-color: white;
+  background-color: red;
   justify-content: space-between;
   border-bottom: 1px solid #E5E5E5;
 }
 
 .nav2items {
   border-right: 1px solid #E5E5E5;
+  min-width: 100px;
 }
 
 .nav2subitems {
