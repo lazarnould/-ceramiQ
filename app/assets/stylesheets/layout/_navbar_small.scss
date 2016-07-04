@@ -2,7 +2,7 @@
   height: 39px;
   display: flex;
   min-width: 100%;
-  background-color: red;
+  background-color: #FFFFFF;
   justify-content: space-between;
   border-bottom: 1px solid #E5E5E5;
 }
@@ -14,7 +14,7 @@
   align-items: center;
   a {
     text-decoration: none;
-    color:white;
+    color:#AEA9BD;
   }
   a:hover {
     color: $brand-green;
