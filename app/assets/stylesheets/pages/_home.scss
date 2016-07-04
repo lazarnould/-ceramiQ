@@ -1,8 +1,4 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
-
+/* Carousel */
 .tales {
   width: 100%;
 }
@@ -10,3 +6,65 @@
   width:100%;
   max-height: 600px !important;
 }
+
+/* Gender-Cards */
+
+
+.gender-card {
+  min-height: 275px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  border-radius: 4px;
+  margin-top: 30px;
+  border: 1px solid #AEA9BF;
+  margin-right: 30px;
+}
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.card-link:hover{
+  opacity: 0.1;
+}
+
+.container-home {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.card-margin {
+  margin-top: 20px;
+}
+
+.run-card {
+  background: url('running.jpg');
+}
+
+.climbing-card {
+  background: url('climbing.jpg');
+}
+
+.hiking-card {
+  background: url('homontagne.jpg');
+  background-position: center-center;
+}
+
+.canyon-card {
+  background: url('chamonix-31.jpg');
+  background-position: center-center;
+}
+
+
