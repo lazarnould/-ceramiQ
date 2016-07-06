@@ -1,5 +1,5 @@
 .nav2container {
-  height: 39px;
+  height: 45px;
   display: flex;
   min-width: 100%;
   background-color: #FFFFFF;
@@ -8,7 +8,6 @@
 }
 
 .nav2items {
-  border-right: 1px solid #E5E5E5;
   min-width: 100px;
   display: flex;
   align-items: center;
@@ -22,6 +21,18 @@
   }
 }
 
+.about {
+  border-right: 1px solid #E5E5E5;
+}
+
 .nav2subitems {
   padding: 0 11px;
+}
+
+.smallnavlogo img {
+  height: 30px;
+  padding-left: 150px;
+  width: inherit;
+  display: flex;
+  align-items: center;
 }
