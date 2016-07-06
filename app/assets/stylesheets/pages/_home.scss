@@ -1,25 +1,81 @@
 /* Carousel */
+.carousel {
+  margin-top: 20px;
+}
 .tales {
   width: 100%;
 }
 .carousel-inner{
   width:100%;
-  max-height: 600px !important;
+  height: 400px !important;
+  size:cover;
 }
 
-/* Gender-Cards */
+.carousel-indicators li {
+    background: #AEA9BD;
+}
+
+.carousel-indicators .active {
+    background: $brand-green;
+}
+
+/* Gender */
+.ceratech {
+  background-color: $gray-lighter;
+  height: 175px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+  font-weight: lighter;
+  letter-spacing: 8px;
+}
+.male {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 175px;
+  margin-top: 15px;
+  background-color: #41AB42;
+  color: white;
+  font-weight: lighter;
+}
+
+.female {
+  padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 175px;
+  margin-top: 15px;
+  background: url('latania-5.jpg');
+  background-position: center;
+  background-size: contain !important;
+  background-repeat: no-repeat;
+  h4 {
+    color:$gray-light;
+  };
+  p {
+    color: $brand-pink;
+  };
+  border: 1px solid #F9F9F9;
+}
 
 
-.gender-card {
+/* Category-Cards */
+.category-card {
   min-height: 275px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
   color: white;
   position: relative;
-  border-radius: 4px;
-  margin-top: 30px;
   border: 1px solid #AEA9BF;
-  margin-right: 30px;
+  border-radius: 2px;
+
+  h2 {
+    font-weight: lighter;
+    letter-spacing: 8px;
+  }
 }
 .card-description {
   position: absolute;
@@ -51,20 +107,29 @@
 
 .run-card {
   background: url('running.jpg');
+  background-size: cover !important;
+  margin-top: 30px;
 }
 
 .climbing-card {
   background: url('climbing.jpg');
+  background-size: cover !important;
 }
 
 .hiking-card {
   background: url('homontagne.jpg');
-  background-position: center-center;
+  background-size: cover !important;
 }
 
 .canyon-card {
   background: url('chamonix-31.jpg');
-  background-position: center-center;
+  background-size: cover !important;
+  margin-top: 30px;
+}
+.ski-card {
+  background: url('ceraski.jpg');
+  background-size: cover !important;
+  background-position: bottom;
 }
 
 
