@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   resources :delivery_infos
 
+  get 'secondhome', to: 'pages#secondhome', as: :secondhome
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
