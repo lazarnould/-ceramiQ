@@ -1,5 +1,5 @@
 .nav2container {
-  height: 45px;
+  height: 68px;
   display: flex;
   min-width: 100%;
   background-color: #FFFFFF;
@@ -21,8 +21,12 @@
   }
 }
 
-.about {
-  border-right: 1px solid #E5E5E5;
+.navend {
+  padding-right: 10px;
+}
+.nav2items2 {
+  margin-left: 50px;
+  display: flex;
 }
 
 .nav2subitems {
@@ -30,9 +34,14 @@
 }
 
 .smallnavlogo img {
-  height: 30px;
-  padding-left: 150px;
+  height: 50px;
   width: inherit;
-  display: flex;
-  align-items: center;
 }
+
+.basket {
+  a {
+    color: #4CAD29;
+  }
+}
+
+
