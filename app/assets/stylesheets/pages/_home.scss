@@ -62,10 +62,39 @@
   border: 1px solid #F9F9F9;
 }
 
+/* Ambassadors */
+.ambassadors-container {
+  margin-top: 30px;
+}
 
-/* Category-Cards */
+.ceramultilogo {
+  background: url('qallover.png');
+  min-height: 600px;
+  background-size: cover !important;
+}
+
+.amba-1 {
+  background: url('running.jpg');
+  background-size: cover !important;
+  background-position: center;
+}
+
+.amba-2 {
+  background: url('chamonix-31.jpg');
+  background-size: cover !important;
+  background-position: bottom;
+}
+.amba-3 {
+  background: url('runsnow.jpeg');
+  background-size: cover !important;
+}
+.amba-4 {
+  background: url('homontagne.jpg');
+  background-size: cover !important;
+  background-position: center;
+}
 .category-card {
-  min-height: 200px;
+  min-height: 150px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   color: white;
   position: relative;
@@ -97,40 +126,35 @@
   opacity: 0.1;
 }
 
-.container-home {
-  margin-top: 50px;
-  margin-bottom: 100px;
-}
-
 .card-margin {
   margin-top: 20px;
 }
 
-.run-card {
-  background: url('running.jpg');
-  background-size: cover !important;
-  margin-top: 30px;
-}
+// .run-card {
+//   background: url('running.jpg');
+//   background-size: cover !important;
+//   margin-top: 30px;
+// }
 
-.climbing-card {
-  background: url('climbing.jpg');
-  background-size: cover !important;
-}
+// .climbing-card {
+//   background: url('climbing.jpg');
+//   background-size: cover !important;
+// }
 
-.hiking-card {
-  background: url('homontagne.jpg');
-  background-size: cover !important;
-}
+// .hiking-card {
+//   background: url('homontagne.jpg');
+//   background-size: cover !important;
+// }
 
-.canyon-card {
-  background: url('chamonix-31.jpg');
-  background-size: cover !important;
-  margin-top: 30px;
-}
-.ski-card {
-  background: url('ceraski.jpg');
-  background-size: cover !important;
-  background-position: bottom;
-}
+// .canyon-card {
+//   background: url('chamonix-31.jpg');
+//   background-size: cover !important;
+//   margin-top: 30px;
+// }
+// .ski-card {
+//   background: url('ceraski.jpg');
+//   background-size: cover !important;
+//   background-position: bottom;
+// }
 
 
