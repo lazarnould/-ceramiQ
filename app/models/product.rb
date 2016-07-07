@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :specifications, dependent: :destroy
   has_many :order_lines
   has_many :orders, through: :order_lines
+  belongs_to :category
 
 
 
