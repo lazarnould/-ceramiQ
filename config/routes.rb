@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 
   resources :profiles, except: [:destroy]
 
+  resources :categories, only: [:new, :create] do
     resources :products do
       resources :order_lines, except: [:destroy, :show, :index]
       resources :specifications do
         resources :images, only: [:create, :update]
       end
     end
+  end
 
-  resources :categories, only: [:new, :create, :destroy]
+  resources :categories, only: [:destroy]
 
   resources :orders, only: [:show, :create, :index] do
     resources :payments, only: [:new, :create]
