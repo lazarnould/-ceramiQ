@@ -1,10 +1,9 @@
- <%= simple_form_for(@product) do |f| %>
+ <%= simple_form_for [@category,@product] do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :name %>
   <%= f.input :gender %>
   <%= f.input :price_cents %>
-  <%= f.input :category %>
   <%= f.input :description %>
   <%= f.input :season %>
   <%= f.input :photo %>
