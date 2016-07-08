@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:new, :create] do
     resources :products do
       resources :order_lines, except: [:destroy, :show, :index]
-      resources :specifications do
+      resources :specifications, except: [:destroy] do
         resources :images, only: [:create, :update]
       end
     end
@@ -22,9 +22,14 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 
-  resources :delivery_infos
+  resources :delivery_infos, except: [:destroy]
 
   get 'secondhome', to: 'pages#secondhome', as: :secondhome
+
+  get 'men', to: 'categories#show_men', as: :men_categories
+
+  get 'women', to: 'categories#show_women', as: :women_categories
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
