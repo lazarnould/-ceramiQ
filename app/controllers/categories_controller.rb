@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :find_category, only: [:show, :destroy]
+  before_action :find_category, only: [:show_men, :show_women, :destroy]
 
   def new
     @category = Category.new
@@ -20,7 +20,12 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def show
+  def show_men
+    @products = @category.products.all.select {|product| product.gender == "men"}
+  end
+
+  def show_women
+    @products = @category.products.all.select {|product| product.gender == "women"}
   end
 
   def destroy
