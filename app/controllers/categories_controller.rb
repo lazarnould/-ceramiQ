@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :find_category, only: [:show, :destroy]
+
   def new
     @category = Category.new
   end
@@ -14,14 +16,24 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def index
+    @categories = Category.all
+  end
+
+  def show
+  end
+
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     flash[:notice] = "The #{@category.name} category has been destroyed"
     redirect_to root_path
   end
 
   private
+
+  def find_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
