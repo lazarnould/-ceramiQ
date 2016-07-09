@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'secondhome', to: 'pages#secondhome', as: :secondhome
 
   get '/categories/:id/men', to: 'categories#show_men', as: :men_categories
-    get '/categories/:id/women', to: 'categories#show_women', as: :women_categories
+  get '/categories/:id/women', to: 'categories#show_women', as: :women_categories
 
 
 
