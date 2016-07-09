@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 
   resources :profiles, except: [:destroy]
 
-  resources :categories, only: [:new, :create] do
-    resources :products do
+  resources :categories, only: [:show, :new, :create] do
+    resources :products, only: [:new, :create]
+  end
+
+  resources :products, except: [:new, :create] do
       resources :order_lines, except: [:destroy, :show, :index]
       resources :specifications, except: [:destroy] do
         resources :images, only: [:create, :update]
       end
     end
-  end
 
   resources :categories, only: [:destroy]
 
@@ -26,9 +28,11 @@ Rails.application.routes.draw do
 
   get 'secondhome', to: 'pages#secondhome', as: :secondhome
 
-  get 'men', to: 'categories#show_men', as: :men_categories
+  get '/categories/:id/men', to: 'categories#show_men', as: :men_categories
+    get '/categories/:id/women', to: 'categories#show_women', as: :women_categories
 
-  get 'women', to: 'categories#show_women', as: :women_categories
+
+
 
 
 

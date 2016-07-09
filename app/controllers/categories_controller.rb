@@ -24,8 +24,8 @@ class CategoriesController < ApplicationController
   end
 
   def show_men
-    @products = @category.products.all.select {|product| product.gender == "men"}
-    # @products = @category.products.where(gender == "men")
+    # @products = @category.products.all.select {|product| product.gender == "men"}
+    @products = @category.products.where(gender == "men")
   end
 
   def show_women
