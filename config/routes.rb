@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :profiles, except: [:destroy]
 
-  resources :categories, only: [:show, :new, :create] do
+  resources :categories, only: [:new, :create] do
     resources :products, only: [:new, :create]
   end
 
@@ -26,10 +26,11 @@ Rails.application.routes.draw do
 
   resources :delivery_infos, except: [:destroy]
 
-  get 'secondhome', to: 'pages#secondhome', as: :secondhome
-
   get '/categories/:id/men', to: 'categories#show_men', as: :men_categories
+
   get '/categories/:id/women', to: 'categories#show_women', as: :women_categories
+
+  get '/categories/:id/accessories', to: 'categories#show_accessory', as: :accessories
 
 
 
