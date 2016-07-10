@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
   end
 
   def show_accessory
-    @products = @category.products.all.select {|product| product.gender == "Accesory"}
+    @products = @category.products.all.select {|product| product.gender == "Accessory"}
   end
 
   def show_men
