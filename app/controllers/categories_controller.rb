@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :find_category, only: [:show_accessory, :show_men, :show_women, :destroy]
+  before_action :find_category, only: [:show, :show_accessory, :show_men, :show_women, :destroy]
+  before_action :cat_index, only: [:show, :show_accessory, :show_men, :show_women, :index]
 
   def new
     @category = Category.new
@@ -17,22 +18,27 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+  end
+
+  def show
   end
 
   def show_accessory
     @products = @category.products.all.select {|product| product.gender == "Accessory"}
     list_types
+    colors
   end
 
   def show_men
     @products = @category.products.all.select {|product| product.gender == "Men"}
     list_types
+    colors
   end
 
   def show_women
     @products = @category.products.all.select {|product| product.gender == "Women"}
     list_types
+    colors
   end
 
   def destroy
@@ -44,6 +50,20 @@ class CategoriesController < ApplicationController
 
   private
 
+  def colors
+    colors = []
+    @products.each do |prod|
+      prod.specifications.each do |spec|
+      colors << spec.color
+      end
+    end
+    @colors = colors.uniq
+  end
+
+  def cat_index
+    @categories = Category.all
+  end
+
   def find_category
     @category = Category.find(params[:id])
   end
@@ -51,11 +71,12 @@ class CategoriesController < ApplicationController
   def list_types
     types = []
     @products.each do |product|
-    product.type >> types
-    @types = types.uniq
+      product.type >> types
+      @types = types.uniq
+    end
   end
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name,:photo, :photo_cache)
   end
 end

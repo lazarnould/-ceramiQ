@@ -14,14 +14,13 @@
 
 .content {
   border: 1px solid #E5E5E5;
+  display:flex;
 }
 
 .left-part {
   width: 216px;
   min-height: 100vh;
   z-index: 998;
-  position: fixed;
-  left: 0;
   padding: 24px;
 }
 
@@ -38,8 +37,84 @@
   margin-bottom: 21px;
 }
 
-.left-part-types {
-  li {
-    list-style-type: none;
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-bottom: 32px;
+  a {
+    color: #111111;
+    font-size:14px;
+    line-height: 24px;
+  };
+  a:hover {
+    color: #8d8d8d;
   }
 }
+
+.right-part{
+  width: 1062px;
+}
+
+.cat-banner {
+  width: 100%;
+  height: 385px;
+  background-position: center;
+  background-size: cover !important;
+}
+
+.cat-banner-empty {
+  background: url('qallover.png');
+}
+
+.cat-prod-grid {
+  width: 220px;
+  background: #FFF;
+  padding-top: 13px;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.cat-prod-grid:hover {
+  border: 1px solid #CCC;
+}
+
+.cat-prod-grid-banner {
+  width: 220px;
+  margin: 0px auto;
+  text-align: center;
+  max-height: 220px;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover !important;
+  margin-bottom: 5px;
+}
+
+.cat-prod-grid-colors {
+  font-size: 11px;
+  line-height: 1.5em;
+}
+
+.cat-prod-name {
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.cat-prod-name-title {
+  font-weight: bold;
+  color: #222;
+}
+.cat-prod-name-subtitle {
+  font-weight: 400;
+  color: #666;
+  font-style: normal;
+}
+
+.cat-prod-price {
+  font-weight: 400;
+  color: #666;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
