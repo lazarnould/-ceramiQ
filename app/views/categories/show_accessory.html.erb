@@ -18,10 +18,31 @@
         <li><%= link_to "Accessories", accessories_path(@category)%></li>
       </ul>
     </div>
-    <div class="left-part-types">
+    <div class="left-part-sports left_part_lists">
+
+      <div class="left-part-title">
+      <=% Sports %>
+      </div>
+      <div class="left-part-line"> <hr> </div>
+
       <ul>
         <% @categories.each do |c| %>
           <li> <%= link_to "#{c.name}", category_path(c.id) %> </li>
+        <%end%>
+      </ul>
+
+    </div>
+
+    <div class="left_part_types left_part_lists">
+
+      <div class="left-part-title">
+      <=% Filters %>
+      </div>
+      <div class="left-part-line"> <hr> </div>
+
+      <ul>
+        <% @types.each do |t| %>
+          <li> <%= t.name %> </li>
         <%end%>
       </ul>
 
