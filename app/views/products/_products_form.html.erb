@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <%= f.input :name %>
-  <%= f.input :gender %>
+  <%= f.input :gender, collection: ["Men", "Women", "Accessory"] %>
   <%= f.input :price_cents %>
   <%= f.input :description %>
   <%= f.input :season %>

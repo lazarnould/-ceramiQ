@@ -1,7 +1,7 @@
 <%= simple_form_for(@category) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :name, collection: ["Men", "Women", "Accessory"] %>
+  <%= f.input :name %>
 
   <%= f.button :submit %>
 <% end %>

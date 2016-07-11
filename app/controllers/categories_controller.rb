@@ -22,6 +22,11 @@ class CategoriesController < ApplicationController
 
   def show_accessory
     @products = @category.products.all.select {|product| product.gender == "Accessory"}
+
+    types = []
+    @products.each do |product|
+    product.type >> types
+    @types = types.uniq
   end
 
   def show_men

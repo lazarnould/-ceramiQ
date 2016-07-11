@@ -1,0 +1,28 @@
+<div class="wrapper gray-space">
+  <h3>Delivery infos</h3>
+</div>
+
+<div class="content">
+
+  <div class="left-part">
+
+    <div class="left-part-title">
+      <=% @category.name %>
+    </div>
+
+    <div class="left-part-line"> <hr> </div>
+
+    <div class="left-part-types">
+      <ul>
+        <% @types.each do |t| %>
+          <li> <%= t %></li>
+        <%end%>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="right-part">
+  </div>
+
+</div>
