@@ -20,8 +20,7 @@
   width: 216px;
   min-height: 100vh;
   z-index: 998;
-  position: fixed;
-  left: 0;
+
   padding: 24px;
 }
 
@@ -38,12 +37,18 @@
   margin-bottom: 21px;
 }
 
-.left-part-lists {
-  li {
-    list-style-type: none;
-    padding-left: 10px;
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  margin-bottom: 32px;
+  a {
+    color: #111111;
+    font-size:14px;
+    line-height: 24px;
+  };
+  a:hover {
+    color: #8d8d8d;
   }
 }
-
 
 

@@ -7,7 +7,7 @@
   <div class="left-part">
 
     <div class="left-part-title">
-      <=% @category.name %>
+      <%= @category.name %>
     </div>
 
     <div class="left-part-line"> <hr> </div>
@@ -21,7 +21,7 @@
     <div class="left-part-sports left_part_lists">
 
       <div class="left-part-title">
-      <=% Sports %>
+        Sports
       </div>
       <div class="left-part-line"> <hr> </div>
 
@@ -36,14 +36,12 @@
     <div class="left_part_types left_part_lists">
 
       <div class="left-part-title">
-      <=% Filters %>
+        Filters
       </div>
       <div class="left-part-line"> <hr> </div>
 
       <ul>
-        <% @types.each do |t| %>
-          <li> <%= t.name %> </li>
-        <%end%>
+        <!-- @type.each -->
       </ul>
 
     </div>
