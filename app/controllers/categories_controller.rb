@@ -22,15 +22,17 @@ class CategoriesController < ApplicationController
 
   def show_accessory
     @products = @category.products.all.select {|product| product.gender == "Accessory"}
+    list_types
   end
 
   def show_men
     @products = @category.products.all.select {|product| product.gender == "Men"}
-    # @products = @category.products.where(product.gender == "men")
+    list_types
   end
 
   def show_women
     @products = @category.products.all.select {|product| product.gender == "Women"}
+    list_types
   end
 
   def destroy
@@ -39,10 +41,18 @@ class CategoriesController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def find_category
     @category = Category.find(params[:id])
+  end
+
+  def list_types
+    types = []
+    @products.each do |product|
+    product.type >> types
+    @types = types.uniq
   end
 
   def category_params

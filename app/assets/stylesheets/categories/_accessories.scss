@@ -1,0 +1,39 @@
+.gray-space {
+  height: 61px;
+  width: 100%;
+  background-color: #F7F7F7;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  h3 {
+    letter-spacing: 2px;
+    font-weight: lighter;
+  }
+}
+
+.content {
+  border: 1px solid #E5E5E5;
+}
+
+.left-part {
+  width: 216px;
+  min-height: 100vh;
+  z-index: 998;
+  position: fixed;
+  left: 0;
+  padding: 24px;
+}
+
+.left-part-title {
+  font-size: 24px;
+  line-height: 1;
+  min-height: 23px;
+  text-transform: uppercase;
+  margin-bottom: 21px;
+}
+
+.left-part-line {
+  color: #E5E5E5;
+  margin-bottom: 21px;
+}
