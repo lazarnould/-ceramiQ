@@ -20,7 +20,6 @@
   width: 216px;
   min-height: 100vh;
   z-index: 998;
-
   padding: 24px;
 }
 
@@ -49,6 +48,17 @@ ul {
   a:hover {
     color: #8d8d8d;
   }
+}
+
+.right-part{
+  width: 981px;
+}
+
+.cat-banner {
+  width: 100%;
+  height: 385px;
+  background-position: center;
+  background-size: cover !important;
 }
 
 
