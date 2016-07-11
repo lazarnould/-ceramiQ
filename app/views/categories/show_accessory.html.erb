@@ -11,11 +11,17 @@
     </div>
 
     <div class="left-part-line"> <hr> </div>
-
+    <div class="left_part_genders">
+      <ul>
+        <li><%= link_to "Men", men_categories_path(@category)%></li>
+        <li><%= link_to "Women", women_categories_path(@category)%></li>
+        <li><%= link_to "Accessories", accessories_path(@category)%></li>
+      </ul>
+    </div>
     <div class="left-part-types">
       <ul>
-        <% @types.each do |t| %>
-          <li> <%= t %></li>
+        <% @categories.each do |c| %>
+          <li> <%= link_to "#{c.name}", category_path(c.id) %> </li>
         <%end%>
       </ul>
 
@@ -26,3 +32,4 @@
   </div>
 
 </div>
+

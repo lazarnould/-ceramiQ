@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
     end
 
-  resources :categories, only: [:destroy]
+  resources :categories, only: [:destroy, :show]
 
   resources :orders, only: [:show, :create, :index] do
     resources :payments, only: [:new, :create]

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :find_category, only: [:show_accessory, :show_men, :show_women, :destroy]
+  before_action :find_category, only: [:show, :show_accessory, :show_men, :show_women, :destroy]
+  before_action :cat_index, only: [:show, :show_accessory, :show_men, :show_women, :index]
 
   def new
     @category = Category.new
@@ -17,7 +18,9 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+  end
+
+  def show
   end
 
   def show_accessory
@@ -43,6 +46,10 @@ class CategoriesController < ApplicationController
 
 
   private
+
+  def cat_index
+    @categories = Category.all
+  end
 
   def find_category
     @category = Category.find(params[:id])
