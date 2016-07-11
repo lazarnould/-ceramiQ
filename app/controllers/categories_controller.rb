@@ -26,16 +26,19 @@ class CategoriesController < ApplicationController
   def show_accessory
     @products = @category.products.all.select {|product| product.gender == "Accessory"}
     list_types
+    colors
   end
 
   def show_men
     @products = @category.products.all.select {|product| product.gender == "Men"}
     list_types
+    colors
   end
 
   def show_women
     @products = @category.products.all.select {|product| product.gender == "Women"}
     list_types
+    colors
   end
 
   def destroy
@@ -46,6 +49,16 @@ class CategoriesController < ApplicationController
 
 
   private
+
+  def colors
+    colors = []
+    @products.each do |prod|
+      prod.specifications.each do |spec|
+      colors << spec.color
+      end
+    end
+    @colors = colors.uniq
+  end
 
   def cat_index
     @categories = Category.all
