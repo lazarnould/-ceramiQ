@@ -1,0 +1,108 @@
+<div class="wrapper gray-space">
+  <h3>Delivery infos</h3>
+</div>
+
+<div class="content">
+
+  <div class="left-part">
+
+    <div class="left-part-title">
+      <%= @category.name %>
+    </div>
+
+    <div class="left-part-line"> <hr> </div>
+    <div class="left_part_genders">
+      <ul>
+        <li><%= link_to "Men", men_categories_path(@category)%></li>
+        <li><%= link_to "Women", women_categories_path(@category)%></li>
+        <li><%= link_to "Accessories", accessories_path(@category)%></li>
+      </ul>
+    </div>
+    <div class="left-part-sports left_part_lists">
+
+      <div class="left-part-title">
+        Sports
+      </div>
+      <div class="left-part-line"> <hr> </div>
+
+      <ul>
+        <% @categories.each do |c| %>
+        <li> <%= link_to "#{c.name}", category_path(c.id) %> </li>
+        <%end%>
+      </ul>
+
+    </div>
+
+    <div class="left_part_types left_part_lists">
+
+      <div class="left-part-title">
+        Filters
+      </div>
+      <div class="left-part-line"> <hr> </div>
+
+      <ul>
+        <!-- @type.each -->
+      </ul>
+
+    </div>
+    <div class="left_part_types left_part_lists">
+
+      <div class="left-part-title">
+        Colors
+      </div>
+      <div class="left-part-line"> <hr> </div>
+
+      <ul>
+        <%if @colors != nil %>
+        <% @colors.each do |color|%>
+        <li> <%=color%> </li>
+        <%end%>
+        <%end%>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="right-part">
+
+    <%if @category.photo == nil%>
+    <div class="cat-banner cat-banner-empty"></div>
+    <%else%>
+    <div class="cat-banner" style="background-image: url(<%= cl_image_path @category.photo %>);"></div>
+    <%end%>
+
+    <div class="container container-indexes">
+      <div class="row">
+        <% @products.each do |product| %>
+        <%color_prod = []%>
+        <%product.specifications.each do |spec|%>
+          <% color_prod << spec.color%>
+          <%end%>
+          <% colors_by_prod = color_prod.uniq%>
+          <div class="col-xs-12 col-md-3 cat-prod-link">
+            <%= link_to product_path(product), style: "text-decoration:none;" do%>
+              <div class="cat-prod">
+                <div class="cat-prod-grid-banner" style="background-image: url(<%= cl_image_path product.photo%>)"></div>
+                <div class="cat-prod-grid-colors">
+                  <%= colors_by_prod.count%> Colours
+                </div>
+                <div class="left-part-line prod-line"><hr></div>
+                <div class="cat-prod-name">
+                  <p class="cat-prod-name-title"><%= product.name %></p>
+                  <p class="cat-prod-name-subtitle"><%=product.category.name%> <%=product.gender%></p>
+                </div>
+                <div class="cat-prod-price">
+                  <%= product.price_cents %><i class="fa fa-eur" aria-hidden="true"></i>
+                </div>
+              </div>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
