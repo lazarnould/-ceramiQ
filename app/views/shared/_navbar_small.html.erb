@@ -1,21 +1,61 @@
+<% all_sports = []%>
+<% sports = Category.all%>
+<% sports.each do |cat| %>
+  <% all_sports << cat%>
+<%end%>
+
+<% all_sexes = []%>
+<% sexes = Category.all%>
+<% sexes.each do |sex| %>
+  <% all_sexes << sex%>
+<%end%>
+
+<% every_sexes = all_sexes.uniq %>
+
 <div class="nav2container">
   <div class="nav2items smallnavlogo">
     <a href="#"><%= image_tag 'logofeelings.png'%></a>
 
     <div class="nav2items2">
       <div class="nav2subitems">
-        <a href="#">Men <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        <div class="dropdown">
+          <a>Men</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <div class="dropdown-content-men">
+            <div class="dropdown-title"><h4> Shop by Sports</h4></div>
+            <div class="dropdown-sports">
+              <ul>
+                <%all_sports.each do |sport|%>
+                  <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
+                <%end%></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="nav2subitems">
-        <a href="#">Women <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        <div class="dropdown">
+          <a>Women</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <div class="dropdown-content-women">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
       </div>
       <div class="nav2subitems">
-        <a href="#">Accessories <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+        <div class="dropdown">
+          <a>Accessories</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <div class="dropdown-content-accessory">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
       </div>
-      <div class="nav2subitems ">
+      <div class="nav2subitems no-dropdown">
         <a href="#">Contact</a>
       </div>
-      <div class="nav2subitems ">
+      <div class="nav2subitems no-dropdown">
         <a href="#">About</a>
       </div>
     </div>
@@ -34,4 +74,3 @@
   </div>
 
 </div>
-
