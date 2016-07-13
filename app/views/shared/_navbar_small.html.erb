@@ -1,14 +1,16 @@
-<% sports = []%>
-<% Category.each do |cat| %>
-  <% cat.name >> sports%>
+<% all_sports = []%>
+<% sports = Category.all%>
+<% sports.each do |cat| %>
+  <% all_sports << cat%>
 <%end%>
 
-<% sex = [] %>
-<% Product.each do |prod| %>
-  <% prod.type >> sex%>
+<% all_sexes = []%>
+<% sexes = Category.all%>
+<% sexes.each do |sex| %>
+  <% all_sexes << sex%>
 <%end%>
 
-<% sexes = sex.uniq %>
+<% every_sexes = all_sexes.uniq %>
 
 <div class="nav2container">
   <div class="nav2items smallnavlogo">
@@ -21,12 +23,12 @@
           <div class="dropdown-content-men">
             <div class="dropdown-title"><h4> Shop by Sports</h4></div>
             <div class="dropdown-sports">
-              <%sports.each do |sport|%>
-                <%=link_to "#{sport}"%>
+              <ul>
+                <%all_sports.each do |sport|%>
+                  <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
+                <%end%></li>
+              </ul>
             </div>
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
           </div>
         </div>
       </div>
