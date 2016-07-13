@@ -4,13 +4,12 @@
   <% all_sports << cat%>
 <%end%>
 
-<% all_sexes = []%>
-<% sexes = Category.all%>
-<% sexes.each do |sex| %>
-  <% all_sexes << sex%>
+<% all_types = []%>
+<% products = Product.all%>
+<% products.each do |prod| %>
+  <% all_types << prod %>
 <%end%>
-
-<% every_sexes = all_sexes.uniq %>
+<% every_types = all_types.uniq %>
 
 <div class="nav2container">
   <div class="nav2items smallnavlogo">
@@ -21,13 +20,37 @@
         <div class="dropdown">
           <a>Men</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
           <div class="dropdown-content-men">
-            <div class="dropdown-title"><h4> Shop by Sports</h4></div>
-            <div class="dropdown-sports">
-              <ul>
-                <%all_sports.each do |sport|%>
-                  <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
-                <%end%></li>
-              </ul>
+            <div class="dropdown-links">
+              <div class="dropdown-columns dropdown-bold">
+                <h4> Shops</h4>
+                <h4> Our Ambassadors</h4>
+                <h4> About us</h4>
+                <h4> Specialists Advices</h4>
+              </div>
+              <div class="dropdown-columns">
+                <h4> Shop by Sports</h4>
+                <ul>
+                  <%all_sports.each do |sport|%>
+                    <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
+                  <%end%></li>
+                </ul>
+              </div>
+              <div class="dropdown-columns">
+                <h4> Shop by Items</h4>
+                <li>Blabla</li>
+                <ul>
+                  <%every_types.each do |prod|%>
+                    <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
+                  <%end%></li>
+                </ul>
+              </div>
+              <div class="dropdown-columns dropdown-icon">
+                <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
+                <div class="dropdown-img-description">
+                  <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
