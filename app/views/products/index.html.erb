@@ -1,4 +1,0 @@
-<%= @products.each do |product| %>
-<%= cl_image_tag product.photo, height: 300, width: 400, crop: :fill %>
-<p>Amount: <%= humanized_money_with_symbol(product.price) %></p>
-<% end %>
