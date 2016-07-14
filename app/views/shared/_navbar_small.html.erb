@@ -1,25 +1,25 @@
 <% all_sports = []%>
 <% sports = Category.all%>
 <% sports.each do |cat| %>
-  <% all_sports << cat%>
+<% all_sports << cat%>
 <%end%>
 
 <% all_types = []%>
 <% products = Product.all%>
 <% products.each do |prod| %>
-  <% all_types << prod %>
+<% all_types << prod %>
 <%end%>
 <% every_types = all_types.uniq %>
 
 <div class="nav2container">
   <div class="nav2items smallnavlogo">
     <%= link_to root_path do %>
-      <%= image_tag 'logofeelings.png'%>
+    <%= image_tag 'logofeelings.png'%>
     <%end%>
 
     <div class="nav2items2">
       <div class="nav2subitems">
-        <div class="dropdown">
+        <div class="dropdown-special">
           <a>Men</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
           <div class="dropdown-content-men">
             <div class="dropdown-links">
@@ -34,190 +34,199 @@
                 <li>Blabla</li>
                 <ul>
                   <%every_types.each do |prod|%>
-                    <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns">
-                <h4> Shop by Sports</h4>
-                <ul>
-                  <%all_sports.each do |sport|%>
+                  <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
+                    <%end%></li>
+                  </ul>
+                </div>
+                <div class="dropdown-columns">
+                  <h4> Shop by Sports</h4>
+                  <ul>
+                    <%all_sports.each do |sport|%>
                     <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns dropdown-icon">
-                <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
-                <div class="dropdown-img-description">
-                  <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
-
+                      <%end%></li>
+                    </ul>
+                  </div>
+                  <div class="dropdown-columns">
+                    <div class="search-container">
+                      <form action="" class="navbar-wagon-search">
+                        <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+                        <button type="submit" class="navbar-wagon-search-btn">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </form>
+                    </div>
+                    <div class="dropdown-icon">
+                      <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
+                      <div class="dropdown-img-description">
+                        <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="nav2subitems">
-        <div class="dropdown">
-          <a>Women</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
-          <div class="dropdown-content-women">
-            <div class="dropdown-links">
-              <div class="dropdown-columns dropdown-bold">
-                <h4> Shops</h4>
-                <h4> Our Ambassadors</h4>
-                <h4> About us</h4>
-                <h4> Specialists Advices</h4>
-              </div>
-              <div class="dropdown-columns">
-                <h4> Shop by Items</h4>
-                <li>Blabla</li>
-                <ul>
-                  <%every_types.each do |prod|%>
-                    <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns">
-                <h4> Shop by Sports</h4>
-                <ul>
-                  <%all_sports.each do |sport|%>
-                    <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns dropdown-icon">
-                <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
-                <div class="dropdown-img-description">
-                  <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
+          <div class="nav2subitems">
+            <div class="dropdown-special">
+              <a>Women</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+              <div class="dropdown-content-women">
+                <div class="dropdown-links">
+                  <div class="dropdown-columns dropdown-bold">
+                    <h4> Shops</h4>
+                    <h4> Our Ambassadors</h4>
+                    <h4> About us</h4>
+                    <h4> Specialists Advices</h4>
+                  </div>
+                  <div class="dropdown-columns">
+                    <h4> Shop by Items</h4>
+                    <li>Blabla</li>
+                    <ul>
+                      <%every_types.each do |prod|%>
+                      <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
+                        <%end%></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-columns">
+                      <h4> Shop by Sports</h4>
+                      <ul>
+                        <%all_sports.each do |sport|%>
+                        <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
+                          <%end%></li>
+                        </ul>
+                      </div>
+                      <div class="dropdown-columns dropdown-icon">
+                        <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
+                        <div class="dropdown-img-description">
+                          <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="nav2subitems">
+                <div class="dropdown-special">
+                  <a>Accessories</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <div class="dropdown-content-accessory">
+                    <div class="dropdown-links">
+                      <div class="dropdown-columns dropdown-bold">
+                        <h4> Shops</h4>
+                        <h4> Our Ambassadors</h4>
+                        <h4> About us</h4>
+                        <h4> Specialists Advices</h4>
+                      </div>
+                      <div class="dropdown-columns">
+                        <h4> Shop by Items</h4>
+                        <li>Blabla</li>
+                        <ul>
+                          <%every_types.each do |prod|%>
+                          <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
+                            <%end%></li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-columns">
+                          <h4> Shop by Sports</h4>
+                          <ul>
+                            <%all_sports.each do |sport|%>
+                            <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
+                              <%end%></li>
+                            </ul>
+                          </div>
+                          <div class="dropdown-columns dropdown-icon">
+                            <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
+                            <div class="dropdown-img-description">
+                              <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="nav2subitems no-dropdown">
+                    <a href="#">Contact</a>
+                  </div>
+                  <div class="nav2subitems no-dropdown">
+                    <a href="#">About</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="nav2items navend">
+                <div class="nav2subitems ">
+                  <%if user_signed_in?%>
+                  <div class="navbar-wagon-item">
+                    <div class="dropdown">
+                      <a id="navbar-wagon-menu" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.email %>
+                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                        <li>
+                          <%= link_to profile_path(current_user) do %>
+                          <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to orders_path do %>
+                          <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to destroy_user_session_path, method: :delete do %>
+                          <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+                          <% end %>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <%else%>
+                  <%=link_to new_user_session_path do %>
+                  <a>Connexion</a>
+                  <%end%>
+                  <%end%>
+                </div>
+                <div class="nav2subitems basket">
+                  <a href="#">|</a>
+                </div>
+                <div class="nav2subitems">
+                  <%=link_to orders_path do%>
+                    <i class="fa fa-shopping-cart " aria-hidden="true"></i>
+                  <%end%>
+                </div>
+              </div>
+
+
+              <!-- Dropdown list appearing on mobile only -->
+              <div class="navbar-wagon-item hidden-md hidden-lg">
+                <div class="dropdown-devise-mobile">
+                  <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown-devise-mobile"></i>
+                  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                    <%if user_signed_in?%>
+                    <div class="navbar-wagon-item">
+                      <div class="dropdown-devise">
+                        <a><%= current_user.email%></a>
+                        <li>
+                          <%= link_to profile_path(current_user) do %>
+                          <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to orders_path do %>
+                          <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to destroy_user_session_path, method: :delete do %>
+                          <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+                          <% end %>
+                        </li>
+                      </div>
+                    </div>
+                    <%else%>
+                    <%=link_to new_user_session_path do %>
+                    <a>Connexion</a>
+                    <%end%>
+                    <%end%>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="nav2subitems">
-        <div class="dropdown">
-          <a>Accessories</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
-          <div class="dropdown-content-accessory">
-            <div class="dropdown-links">
-              <div class="dropdown-columns dropdown-bold">
-                <h4> Shops</h4>
-                <h4> Our Ambassadors</h4>
-                <h4> About us</h4>
-                <h4> Specialists Advices</h4>
-              </div>
-              <div class="dropdown-columns">
-                <h4> Shop by Items</h4>
-                <li>Blabla</li>
-                <ul>
-                  <%every_types.each do |prod|%>
-                    <li><%=link_to "#{prod.type}", men_categories_path(prod.category)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns">
-                <h4> Shop by Sports</h4>
-                <ul>
-                  <%all_sports.each do |sport|%>
-                    <li><%=link_to "#{sport.name}", men_categories_path(sport.id)%>
-                  <%end%></li>
-                </ul>
-              </div>
-              <div class="dropdown-columns dropdown-icon">
-                <div class="dropdown-img"><%= image_tag 'qallover.png', style: "height: 100px; width: 100px;"%></div>
-                <div class="dropdown-img-description">
-                  <p style="padding-left:10px;">Technical multisport base layer<br>Amazing feeling during sport practice and recovery<br>Technology Gold Reflect'line</p>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="nav2subitems no-dropdown">
-        <a href="#">Contact</a>
-      </div>
-      <div class="nav2subitems no-dropdown">
-        <a href="#">About</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="nav2items navend">
-    <div class="nav2subitems ">
-      <%if user_signed_in?%>
-        <div class="navbar-wagon-item">
-          <div class="dropdown-devise">
-            <a><%= current_user.email%></a>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li>
-                <%= link_to profile_path(current_user.profile) do %>
-                  <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to orders_path do %>
-                  <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      <%else%>
-        <%=link_to new_user_session_path do %>
-          <a>Connexion</a>
-        <%end%>
-      <%end%>
-    </div>
-    <div class="nav2subitems basket">
-      <a href="#">|</a>
-    </div>
-    <div class="nav2subitems">
-      <%=link_to order_path(user_order) do%>
-       <a href="#"> <i class="fa fa-shopping-cart " aria-hidden="true"></i></a>
-      <%end%>
-    </div>
-  </div>
-
-
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown-devise-mobile">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown-devise-mobile"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <%if user_signed_in?%>
-        <div class="navbar-wagon-item">
-          <div class="dropdown-devise">
-            <a><%= current_user.email%></a>
-              <li>
-                <%= link_to profile_path(current_user.profile) do %>
-                  <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to orders_path do %>
-                  <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
-                <% end %>
-              </li>
-          </div>
-        </div>
-      <%else%>
-        <%=link_to new_user_session_path do %>
-          <a>Connexion</a>
-        <%end%>
-      <%end%>
-      </ul>
-    </div>
-  </div>
-</div>
