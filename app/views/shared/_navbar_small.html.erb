@@ -20,7 +20,9 @@
     <div class="nav2items2">
       <div class="nav2subitems">
         <div class="dropdown-special">
-          <a>Men</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <%= link_to men_products_path do%>
+            Men <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <%end%>
           <div class="dropdown-content-men">
             <div class="dropdown-links">
               <div class="dropdown-columns dropdown-bold">
@@ -68,7 +70,9 @@
           </div>
           <div class="nav2subitems">
             <div class="dropdown-special">
-              <a>Women</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+              <%= link_to women_products_path do%>
+                Women <i class="fa fa-angle-down" aria-hidden="true"></i>
+              <%end%>
               <div class="dropdown-content-women">
                 <div class="dropdown-links">
                   <div class="dropdown-columns dropdown-bold">
@@ -116,7 +120,9 @@
               </div>
               <div class="nav2subitems">
                 <div class="dropdown-special">
-                  <a>Accessories</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <%= link_to accessories_path do%>
+                    Accessories <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <%end%>
                   <div class="dropdown-content-accessory">
                     <div class="dropdown-links">
                       <div class="dropdown-columns dropdown-bold">
