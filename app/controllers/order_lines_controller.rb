@@ -6,15 +6,23 @@ class OrderLinesController < ApplicationController
 
   def new
     @product = Product.find(params[:product_id])
-    @order = current_user.orders.last
+    preorder = current_user.orders.last
+    if preorder.date == Date.today.to_s
+      @order = preorder
+    else
+      @order = Order.new(user: current_user, state: 'pending', date: Date.today.to_s)
+    end
     @orderline = @product.order_lines.new
     # render layout: nil
   end
 
   def create
-    @order = current_user.orders.last
-    if  !@order
-      @order = Order.create(user: current_user, state: 'pending')
+    preorder = current_user.orders.last
+    if preorder.date == Date.today.to_s
+      @order = preorder
+    else
+      @order = Order.new(user: current_user, state: 'pending', date: Date.today.to_s)
+      @order.save
     end
     @orderline = @order.order_lines.build(order_line_params)
     @product = Product.find(params[:product_id])
