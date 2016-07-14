@@ -13,7 +13,9 @@
 
 <div class="nav2container">
   <div class="nav2items smallnavlogo">
-    <a href="#"><%= image_tag 'logofeelings.png'%></a>
+    <%= link_to root_path do %>
+      <%= image_tag 'logofeelings.png'%>
+    <%end%>
 
     <div class="nav2items2">
       <div class="nav2subitems">
@@ -144,14 +146,78 @@
 
   <div class="nav2items navend">
     <div class="nav2subitems ">
-      <a href="#">Connexion</a>
+      <%if user_signed_in?%>
+        <div class="navbar-wagon-item">
+          <div class="dropdown-devise">
+            <a><%= current_user.email%></a>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to profile_path(current_user.profile) do %>
+                  <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to orders_path do %>
+                  <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <%else%>
+        <%=link_to new_user_session_path do %>
+          <a>Connexion</a>
+        <%end%>
+      <%end%>
     </div>
     <div class="nav2subitems basket">
       <a href="#">|</a>
     </div>
     <div class="nav2subitems">
-      <a href="#"> <i class="fa fa-shopping-cart " aria-hidden="true"></i></a>
+      <%=link_to order_path(user_order) do%>
+       <a href="#"> <i class="fa fa-shopping-cart " aria-hidden="true"></i></a>
+      <%end%>
     </div>
   </div>
 
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown-devise-mobile">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown-devise-mobile"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <%if user_signed_in?%>
+        <div class="navbar-wagon-item">
+          <div class="dropdown-devise">
+            <a><%= current_user.email%></a>
+              <li>
+                <%= link_to profile_path(current_user.profile) do %>
+                  <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to orders_path do %>
+                  <i class="fa fa-list" aria-hidden="true"></i>  <%= t ".profile", default: "My orders" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
+                <% end %>
+              </li>
+          </div>
+        </div>
+      <%else%>
+        <%=link_to new_user_session_path do %>
+          <a>Connexion</a>
+        <%end%>
+      <%end%>
+      </ul>
+    </div>
+  </div>
 </div>
