@@ -31,6 +31,8 @@ class CategoriesController < ApplicationController
 
   def show_men
     @products = @category.products.all.select {|product| product.gender == "men"}
+    list_types
+    colors
   end
 
   def show_women
@@ -69,7 +71,7 @@ class CategoriesController < ApplicationController
   def list_types
     types = []
     @products.each do |product|
-      product.type >> types
+      types << product.type
       @types = types.uniq
     end
   end

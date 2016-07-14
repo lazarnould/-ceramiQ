@@ -42,20 +42,24 @@
       </div>
     </div>
     <div class="col-xs-6 col-md-3">
-      <div class="male hvr-underline-from-center">
-        <div>
-        <p>Collection</p>
-        <h4>Homme</h4>
+      <%= link_to men_products_path do%>
+        <div class="male hvr-underline-from-center">
+          <div>
+          <p>Collection</p>
+          <h4>Homme</h4>
+          </div>
         </div>
-      </div>
+      <%end%>
     </div>
     <div class="col-xs-6 col-md-3">
-      <div class="female hvr-underline-from-center-for-women">
-        <div>
-        <p>Collection</p>
-        <h4>Femme</h4>
+      <%= link_to women_products_path do%>
+        <div class="female hvr-underline-from-center-for-women">
+          <div>
+          <p>Collection</p>
+          <h4>Femme</h4>
+          </div>
         </div>
-      </div>
+      <%end%>
     </div>
   </div>
 </div>

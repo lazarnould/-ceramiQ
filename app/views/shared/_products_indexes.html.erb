@@ -1,3 +1,5 @@
+<%@categories = Category.all%>
+
 <div class="wrapper gray-space">
   <h3>Delivery infos</h3>
 </div>
@@ -7,15 +9,15 @@
   <div class="left-part">
 
     <div class="left-part-title">
-      <%= @gender.name %>
+      <%= @gender %>
     </div>
 
     <div class="left-part-line"> <hr> </div>
     <div class="left_part_genders">
       <ul>
-        <li><%= link_to "Men", men_categories_path(@category)%></li>
-        <li><%= link_to "Women", women_categories_path(@category)%></li>
-        <li><%= link_to "Accessories", accessories_by_sport_path(@category)%></li>
+        <li><%= link_to "Men", men_products_path%></li>
+        <li><%= link_to "Women", women_products_path%></li>
+        <li><%= link_to "Accessories", accessories_path%></li>
       </ul>
     </div>
     <div class="left-part-sports left_part_lists">
@@ -65,10 +67,12 @@
 
   <div class="right-part">
 
-    <%if @category.photo == nil%>
-    <div class="cat-banner cat-banner-empty"></div>
+    <%if @gender == "Men"%>
+      <div class="cat-banner prod-men-banner"></div>
+    <%elsif @gender == "Women"%>
+      <div class="cat-banner prod-women-banner"></div>
     <%else%>
-    <div class="cat-banner" style="background-image: url(<%= cl_image_path @category.photo %>);"></div>
+      <div class="cat-banner prod-accessories-banner"></div>
     <%end%>
 
     <div class="container container-indexes">
