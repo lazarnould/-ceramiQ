@@ -2,8 +2,22 @@ class ProductsController < ApplicationController
 
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @products = Product.all
+  def index_men
+    @products = Product.all.select {|product| product.gender == "men"}
+    list_types
+    colors
+  end
+
+  def index_women
+    @products = Product.all.select {|product| product.gender == "Women"}
+    list_types
+    colors
+  end
+
+  def index_accessories
+    @products = Product.all.select {|product| product.gender == "Accessories"}
+    list_types
+    colors
   end
 
   def show
@@ -45,6 +59,24 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def colors
+    colors = []
+    @products.each do |prod|
+      prod.specifications.each do |spec|
+      colors << spec.color
+      end
+    end
+    @colors = colors.uniq
+  end
+
+  def list_types
+    types = []
+    @products.each do |product|
+      types << product.type
+      @types = types.uniq
+    end
   end
 
   def product_params

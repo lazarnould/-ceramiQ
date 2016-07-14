@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :products, only: [:new, :create]
   end
 
-  resources :products, except: [:new, :create] do
+  resources :products, except: [:new, :create, :index] do
       resources :order_lines, except: [:destroy, :show, :index]
       resources :specifications, except: [:destroy] do
         resources :images, only: [:create, :update]
@@ -30,8 +30,13 @@ Rails.application.routes.draw do
 
   get '/categories/:id/women', to: 'categories#show_women', as: :women_categories
 
-  get '/categories/:id/accessories', to: 'categories#show_accessory', as: :accessories
+  get '/categories/:id/accessories', to: 'categories#show_accessory', as: :accessories_by_sport
 
+  get '/products/men', to: 'products#index_men', as: :men_products
+
+  get '/products/women', to: 'products#index_women', as: :women_products
+
+  get '/products/accessories', to: 'products#index_accessories', as: :accessories
 
 
 
