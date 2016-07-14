@@ -4,18 +4,21 @@ class ProductsController < ApplicationController
 
   def index_men
     @products = Product.all.select {|product| product.gender == "men"}
+    @gender = "Men"
     list_types
     colors
   end
 
   def index_women
     @products = Product.all.select {|product| product.gender == "Women"}
+    @gender = "Women"
     list_types
     colors
   end
 
   def index_accessories
     @products = Product.all.select {|product| product.gender == "Accessories"}
+    @gender = "Accessories"
     list_types
     colors
   end
