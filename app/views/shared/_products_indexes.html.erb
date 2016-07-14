@@ -9,15 +9,15 @@
   <div class="left-part">
 
     <div class="left-part-title">
-      <%= @category.name %>
+      <%= @gender %>
     </div>
 
     <div class="left-part-line"> <hr> </div>
     <div class="left_part_genders">
       <ul>
-        <li><%= link_to "Men", men_categories_path(@category)%></li>
-        <li><%= link_to "Women", women_categories_path(@category)%></li>
-        <li><%= link_to "Accessories", accessories_by_sport_path(@category)%></li>
+        <li><%= link_to "Men", men_products_path%></li>
+        <li><%= link_to "Women", women_products_path%></li>
+        <li><%= link_to "Accessories", accessories_path%></li>
       </ul>
     </div>
     <div class="left-part-sports left_part_lists">
@@ -68,11 +68,11 @@
   <div class="right-part">
 
     <%if @gender == "Men"%>
-      <div class="cat-banner" style="background-image: url(<%= image_tag "cerapanorama.jpg" %>);"></div>
+      <div class="cat-banner prod-men-banner"></div>
     <%elsif @gender == "Women"%>
-      <div class="cat-banner" style="background-image: url(<%= image_tag "chamonix-18.jpg" %>);"></div>
+      <div class="cat-banner prod-women-banner"></div>
     <%else%>
-      <div class="cat-banner" style="background-image: url(<%= image_tag "productshot.jpg" %>);"></div>
+      <div class="cat-banner prod-accessories-banner"></div>
     <%end%>
 
     <div class="container container-indexes">
