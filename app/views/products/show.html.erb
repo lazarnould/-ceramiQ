@@ -40,6 +40,8 @@
 
 
 
+      <%= link_to "Add a specification", new_product_specification(@product.id)%>
+
       <%= link_to "delete", product_path(@product.id), method: :delete %>
 
     </div>
