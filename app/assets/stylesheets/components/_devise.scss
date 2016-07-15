@@ -1,0 +1,15 @@
+.wrapper-session-grey {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: $gray-lighter;
+  padding-top: 60px;
+}
+
+.session-container {
+  min-height: 500px;
+  width: 500px;
+  padding: 20px;
+  border-radius: 3px;
+  margin: auto;
+  background-color: white;
+}
