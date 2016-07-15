@@ -6,8 +6,12 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-1 prod-showcase-images-colors">
-            <%=prod_by_colors.each do |img_color|%>
-              <%= cl_image_tag img_color.images.first, height: 60, width: 60, crop: :fill %>
+            <% if @photos.count == 1%>
+              <%= cl_image_tag @photos.photo, height: 60, width: 60, crop: :fill %>
+            <%else%>
+              <% @photos.each do |p|%>
+                <%= cl_image_tag p, height: 60, width: 60, crop: :fill %>
+              <%end%>
             <%end%>
           </div>
           <div class="col-xs-11 prod-showcase-main-image">
@@ -16,7 +20,11 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-4 prod-showcase-options"></div>
+    <div class="col-xs-12 col-md-4 prod-showcase-options">
+      <div class="prod-showcase-title">
+         <%= @product.name %>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -27,12 +27,16 @@ class ProductsController < ApplicationController
     @orderline = OrderLine.new
     colors = []
     prod_by_colors = []
+    @photos = []
     @product.specifications.each do |spec|
       colors << spec.color
     end
     colors_selected = colors.uniq
     colors_selected.each do |spec_color|
       prod_by_colors << @product.specifications.select {|specification| specification.color == spec_color}.first
+    end
+    prod_by_colors.each do |color_by_spec|
+      @photos << color_by_spec.images.first
     end
   end
 

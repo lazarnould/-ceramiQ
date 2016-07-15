@@ -7,13 +7,14 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    @image.specification = Specification.find(params[:id])
+    @image.specification = Specification.find(params[:specification_id])
     if @image.save
       flash[:notice] = "Image successfully added"
       redirect_to product_specification_path(@image.specification.product, @image.specification)
     else
       flash[:notice] = "An error occured, try again"
       render :new
+    end
   end
 
   def edit
