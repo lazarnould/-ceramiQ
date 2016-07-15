@@ -27,4 +27,28 @@
   letter-spacing: 2px;
 }
 
+.prod-showcase-category {
+  text-transform: uppercase;
+  max-width: 380px;
+  letter-spacing: -1px;
+  color: #666;
+  font-size: 14px;
+  line-height: 14px;
+  font-style: italic;
+  margin-bottom: 8px;
+  margin-top: 5px;
+}
 
+.prod-showcase-price {
+  font-size: 19px;
+  height: 20px;
+  line-height: 18px;
+  padding-top: 0px;
+  margin-top: 4px;
+  color: #222;
+}
+
+.prod-showcase-line{
+  margin: 40px auto 0;
+  color: #E5E5E5;
+}
