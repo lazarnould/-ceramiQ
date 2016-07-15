@@ -1,3 +1,42 @@
+
+
+<div class="prod-showcase container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 prod-showcase-images">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-1 prod-showcase-images-colors">
+            <%=prod_by_colors.each do |img_color|%>
+              <%= cl_image_tag img_color.images.first, height: 60, width: 60, crop: :fill %>
+            <%end%>
+          </div>
+          <div class="col-xs-11 prod-showcase-main-image">
+            <%= cl_image_tag @product.photo, height: 620, width: 620, crop: :fill %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4 prod-showcase-options"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
