@@ -1,3 +1,83 @@
+
+
+<div class="prod-showcase container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 prod-showcase-images">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-1 prod-showcase-images-colors">
+            <% if @photos.count == 1%>
+              <%= cl_image_tag @photos.photo, height: 60, width: 60, crop: :fill %>
+            <%else%>
+              <% @photos.each do |p|%>
+                <%= cl_image_tag p, height: 60, width: 60, crop: :fill %>
+              <%end%>
+            <%end%>
+          </div>
+          <div class="col-xs-11 prod-showcase-main-image">
+            <%= cl_image_tag @product.photo, height: 620, width: 620, crop: :fill %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4 prod-showcase-options">
+      <div class="prod-showcase-title">
+         <%= @product.name %>
+      </div>
+      <div class="prod-showcase-category">
+        <%=@product.gender%>'s <%=@product.category.name%> <%=@product.type%>
+      </div>
+      <div class="prod-showcase-price">
+        <%=@product.price_cents%>€
+      </div>
+      <div class="prod-showcase-line">
+        <hr>
+      </div>
+      <div class="prod-showcase-options">
+        <%= simple_form_for [@product, @orderline] do |f| %>
+          <%= f.error_notification %>
+
+          <% colors = []%>
+          <% @product.specifications.each do |spec| %>
+            <% colors << spec.color %>
+          <%end%>
+          <% real_colors = colors.uniq %>
+
+          <%= f.input :color, collection: real_colors %>
+
+          <!-- Choose the sizes in function of the color -->
+          <% real_sizes = []%>
+          <% @product.specifications.each do |spec| %>
+            <% real_sizes << spec.size %>
+          <%end%>
+
+          <%= f.input :size, collection: real_sizes %>
+          <%= f.input :quantity, :class => 'input-medium' %>
+
+          <%= f.button :submit, value:'Add to Cart', class: 'btn-success', style: 'margin-top: 30px;' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">

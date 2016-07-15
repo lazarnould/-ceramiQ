@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :specifications, except: [:destroy] do
         resources :images, only: [:create, :update]
       end
-    end
+  end
 
   resources :categories, only: [:destroy, :show]
 
