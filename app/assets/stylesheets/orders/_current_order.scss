@@ -26,3 +26,20 @@
     margin-right: 10px;
   }
 }
+
+
+.full-basket {
+  width:500px;
+  margin: 50px auto;
+  padding: 69px 0;
+  hr {
+    color: #666;
+    margin-bottom: 30px;
+  }
+}
+
+.basket-lines {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
