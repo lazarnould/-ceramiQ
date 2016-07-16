@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
   get '/accessories', to: 'products#index_accessories', as: :accessories
 
+  get '/current_order', to: 'orders#current_order', as: :basket
+
+
 
 
 
