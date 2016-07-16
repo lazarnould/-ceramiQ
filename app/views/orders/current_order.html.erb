@@ -1,1 +1,14 @@
-<h1>Final</h1>
+<%if @order == nil%>
+  <div class="empty-basket">
+    <hr>
+    <h4>Your basket is empty</h4>
+    <hr>
+  </div>
+  <div class="basket_links">
+    <%=link_to 'Shop Men', men_products_path, class:'btn btn-success'%>
+    <%=link_to 'Shop Women', women_products_path, class: 'btn btn-success'%>
+  </div>
+<%else%>
+
+
+<%end%>
