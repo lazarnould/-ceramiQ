@@ -10,20 +10,44 @@
   </div>
 <%else%>
   <div class="full-basket">
+    <div class="current-order-title">
+      <h2> Your Order</h2>
+    </div>
     <hr>
     <div class="basket-lines">
+          <div class="order-lines-titles">
+            <div class="subtitles"><h4>Code Article</h4></div>
+            <div class="subtitles"><h4>Name</h4></div>
+            <div class="subtitles"><h4>Color</h4></div>
+            <div class="subtitles"><h4>Size</h4></div>
+            <div class="subtitles"><h4>Price</h4></div>
+          </div>
       <%@order.order_lines.each do |order_line|%>
-        <div class="code-article">
-          <%=order_line.specification.code_article%>
-        </div>
-        <div class="order_prod_name">
-          <%=order_line.product.name%>
-        </div>
-        <div class="price-order-line">
-          <%= order_line.quantity * order_line.price %>€
+        <div class="current-order-flexbox">
+          <div class="code-article">
+            <%=order_line.specification.code_article%>
+          </div>
+          <div class="order_prod_name">
+            <%=order_line.product.name%>
+          </div>
+          <div class="order-line-color">
+            <%=order_line.specification.color%>
+          </div>
+          <div class="order-line-size">
+            <%=order_line.specification.size%>
+          </div>
+          <div class="price-order-line">
+            <%= order_line.quantity * order_line.price %>€
+          </div>
         </div>
       <%end%>
     </div>
     <hr>
+    <div class="order-total">
+      Total: <%=@order.make_subtotal * 100%>€
+    </div>
+    <div class="order-total">
+      <div class="btn btn-success">Purchase</div>
+    </div>
   </div>
 <%end%>

@@ -29,17 +29,44 @@
 
 
 .full-basket {
-  width:500px;
+  width:700px;
   margin: 50px auto;
   padding: 69px 0;
   hr {
-    color: #666;
+    color: #EEE;
     margin-bottom: 30px;
   }
 }
 
-.basket-lines {
+.current-order-title {
+  display:flex;
+  justify-content: center;
+  h2 {
+    color: $brand-green;
+  }
+}
+
+
+.current-order-flexbox {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.basket-lines {
+  min-width: 500px;
+  margin: auto;
+}
+
+.order-lines-titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-total {
+  width: 700px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bolder;
+  margin-bottom:20px;
 }
