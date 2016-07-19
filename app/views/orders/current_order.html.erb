@@ -47,7 +47,9 @@
       Total: <%=@order.make_subtotal * 100%>€
     </div>
     <div class="order-total">
-      <div class="btn btn-success">Purchase</div>
+      <%=link_to new_order_payment_path(@order) do %>
+        <div class="btn btn-success">Purchase</div>
+      <%end%>
     </div>
   </div>
 <%end%>
