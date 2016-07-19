@@ -25,6 +25,7 @@ class OrderLinesController < ApplicationController
     @orderline.price = @product.price_cents
     @specification = @product.specifications.find_by(size: @orderline.size, color: @orderline.color).id
     @orderline.specification_id = @specification
+    @order.amount_cents = @order.make_subtotal
 
     if @orderline.quantity > @orderline.specification.quantity
       flash[:alert] = "The quantity you've ordered of #{@orderline.product.name} exceed the stock"
