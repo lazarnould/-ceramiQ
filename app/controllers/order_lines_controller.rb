@@ -23,6 +23,7 @@ class OrderLinesController < ApplicationController
     @product = Product.find(params[:product_id])
     @orderline.product_id = params[:product_id]
     @orderline.price = @product.price_cents
+    @order.amount_cents = @order.make_subtotal
     @specification = @product.specifications.find_by(size: @orderline.size, color: @orderline.color).id
     @orderline.specification_id = @specification
 
