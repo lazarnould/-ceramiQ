@@ -30,7 +30,7 @@ end
 private
 
 def set_order
-  @order = Order.where(state: 'pending').find(params[:order_id])
+  @order = current_user.orders.where(state: 'pending' && date: Date.today.to_s).find(params[:order_id])
 end
 
 end
