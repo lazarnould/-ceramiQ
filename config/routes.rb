@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:show, :create, :index] do
     resources :payments, only: [:new, :create]
+    resources :delivery_infos, except: [:destroy, :index]
   end
 
-  resources :delivery_infos, except: [:destroy]
 
   get '/categories/:id/men', to: 'categories#show_men', as: :men_categories
 

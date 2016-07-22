@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714152004) do
+ActiveRecord::Schema.define(version: 20160722143322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,10 @@ ActiveRecord::Schema.define(version: 20160714152004) do
     t.string   "last_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "user_id"
     t.integer  "order_id"
   end
 
   add_index "delivery_infos", ["order_id"], name: "index_delivery_infos_on_order_id", using: :btree
-  add_index "delivery_infos", ["user_id"], name: "index_delivery_infos_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "photo"
@@ -150,7 +148,6 @@ ActiveRecord::Schema.define(version: 20160714152004) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "delivery_infos", "orders"
-  add_foreign_key "delivery_infos", "users"
   add_foreign_key "images", "specifications"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
