@@ -9,12 +9,28 @@ class DeliveryInfosController < ApplicationController
   end
 
   def new
-    @delivery_info = DeliveryInfo.new
+    if @delivery_info.order.user.profile.nil?
+      @delivery_info = DeliveryInfo.new
+    else
+      @delivery_info = DeliveryInfo.new
+      @delivery_info.order = Order.find(params[:order_id])
+      @delivery_info.country = @delivery_info.order.user.profile.country
+      @delivery_info.city = @delivery_info.order.user.profile.city
+      @delivery_info.zip_code = @delivery_info.order.user.profile.zip_code
+      @delivery_info.street_name = @delivery_info.order.user.profile.street_name
+      @delivery_info.street_number = @delivery_info.order.user.profile.street_number
+      @delivery_info.phone_prefix = @delivery_info.order.user.profile.phone_number_prefix
+      @delivery_info.phone_number = @delivery_info.order.user.profile.phone_number
+      @delivery_info.first_name = @delivery_info.order.user.profile.first_name
+      @delivery_info.last_name = @delivery_info.order.user.profile.last_name
+      @delivery_info.save
+      redirect_to current_order_path
+    end
   end
 
   def create
     @delivery_info = DeliveryInfo.new(delivery_infos_params)
-    @delivery_info.user_id = current_user.id
+    @delivery_info.order = Order.find(params[:order_id])
     if @delivery_info.save
       redirect_to delivery_info_path(@delivery_info)
     else
