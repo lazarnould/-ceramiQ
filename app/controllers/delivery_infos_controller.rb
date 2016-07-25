@@ -31,6 +31,7 @@ class DeliveryInfosController < ApplicationController
 
   def create
     @delivery_info = DeliveryInfo.new(delivery_infos_params)
+    @delivery_info.order = Order.find(params[:order_id])
     if @delivery_info.save
       redirect_to current_order_path
     else
