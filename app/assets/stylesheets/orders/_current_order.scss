@@ -30,8 +30,8 @@
 
 .full-basket {
   width:700px;
-  margin: 50px auto;
-  padding: 69px 0;
+  margin: 0 auto;
+  padding: 49px 0;
   hr {
     color: #EEE;
     margin-bottom: 30px;
@@ -70,3 +70,32 @@
   font-weight: bolder;
   margin-bottom:20px;
 }
+
+
+.current-order-delivery-infos{
+  width:700px;
+  margin: 0 auto;
+
+  padding: 49px 0;
+  hr {
+    color: #EEE;
+    margin-bottom: 30px;
+  }
+}
+
+.current-order-delivery-title{
+  display:flex;
+  justify-content: center;
+  h2 {
+    color: $brand-green;
+  }
+}
+
+.delivery-btn {
+  margin-bottom: 0 !important;
+}
+
+.green-btn {
+  margin-bottom: 10px;
+}
+

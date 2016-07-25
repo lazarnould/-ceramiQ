@@ -1,14 +1,14 @@
 <%if @order == nil%>
-<div class="empty-basket">
-  <hr>
-  <h4>Your basket is empty</h4>
-  <hr>
-</div>
-<div class="basket_links">
-  <%=link_to 'Shop Men', men_products_path, class:'btn btn-success'%>
-  <%=link_to 'Shop Women', women_products_path, class: 'btn btn-success'%>
-</div>
-<%elsif @order.delivery_infos.nil?%>
+  <div class="empty-basket">
+    <hr>
+    <h4>Your basket is empty</h4>
+    <hr>
+  </div>
+  <div class="basket_links">
+    <%=link_to 'Shop Men', men_products_path, class:'btn btn-success'%>
+    <%=link_to 'Shop Women', women_products_path, class: 'btn btn-success'%>
+  </div>
+<%elsif @order.delivery_info.nil?%>
   <div class="full-basket">
     <div class="current-order-title">
       <h2> Your Order</h2>
@@ -48,7 +48,7 @@
     </div>
     <div class="order-total">
       <%=link_to new_order_delivery_info_path(@order) do %>
-      <div class="btn btn-success">Add your infos</div>
+      <div class="btn btn-success">Checkout</div>
       <%end%>
     </div>
   </div>
@@ -59,16 +59,18 @@
     </div>
     <hr>
     <div class="current-order-infos">
-      <p> <%=@order.delivery_infos.last_name.upcase%> <%=@order.delivery_infos.first_name%></p>
-      <p><%=@order.delivery_infos.country%></p>
-      <p><%=@order.delivery_infos.street_number%> <%=@order.delivery_infos.street_name%> </p>
-      <p><%=@order.delivery_infos.zip_code%> <%=@order.delivery_infos.city%> </p>
-      <p><%=@order.delivery_infos.country%></p>
+      <p> <%=@order.delivery_info.last_name.upcase%> <%=@order.delivery_info.first_name%></p>
+      <p><%=@order.user.email%></p>
+      <p><%=@order.delivery_info.street_number%> <%=@order.delivery_info.street_name%> </p>
+      <p><%=@order.delivery_info.zip_code%> <%=@order.delivery_info.city%> </p>
+      <p><%=@order.delivery_info.country%></p>
     </div>
     <hr>
-    <% link_to edit_order_delivery_info_path(@order, @order.delivery_infos) do %>
-      <div class="btn btn-success">Update</div>
-    <%end%>
+    <div class="order-total delivery-btn">
+      <%=  link_to edit_order_delivery_info_path(@order.id, @order.delivery_info.id) do %>
+        <div class="btn btn-success">Update</div>
+      <%end%>
+    </div>
   </div>
   <div class="full-basket">
     <div class="current-order-title">

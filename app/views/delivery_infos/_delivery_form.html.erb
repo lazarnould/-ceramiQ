@@ -1,4 +1,4 @@
- <%= simple_form_for(@delivery_info) do |f| %>
+ <%= simple_form_for [@delivery_info.order, @delivery_info] do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :first_name %>

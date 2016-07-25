@@ -9,8 +9,9 @@ class DeliveryInfosController < ApplicationController
   end
 
   def new
-    if @delivery_info.order.user.profile.nil?
+    if current_user.profile.nil?
       @delivery_info = DeliveryInfo.new
+      @delivery_info.order = Order.find(params[:order_id])
     else
       @delivery_info = DeliveryInfo.new
       @delivery_info.order = Order.find(params[:order_id])
@@ -30,9 +31,8 @@ class DeliveryInfosController < ApplicationController
 
   def create
     @delivery_info = DeliveryInfo.new(delivery_infos_params)
-    @delivery_info.order = Order.find(params[:order_id])
     if @delivery_info.save
-      redirect_to delivery_info_path(@delivery_info)
+      redirect_to current_order_path
     else
       flash[:notice] = "A problem occured, try again"
       render :new
@@ -44,7 +44,7 @@ class DeliveryInfosController < ApplicationController
 
   def update
     @delivery_info.update(delivery_infos_params)
-    redirect_to delivery_info_path(@delivery_info)
+    redirect_to current_order_path
   end
 
   private
