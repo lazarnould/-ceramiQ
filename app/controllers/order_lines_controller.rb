@@ -13,7 +13,7 @@ class OrderLinesController < ApplicationController
 
   def create
     preorder = current_user.orders.last
-    if preorder.date.nil? || preorder.date != Date.today.to_s || preorder.state != 'pending'
+    if preorder.nil? || preorder.date.nil? || preorder.date != Date.today.to_s || preorder.state != 'pending'
       @order = Order.new(user: current_user, state: 'pending', date: Date.today.to_s)
       @order.save
     else preorder.date == Date.today.to_s && preorder.state = 'pending'
