@@ -62,6 +62,14 @@
   justify-content: space-between;
   align-items: center;
 }
+.order-line-quantity {
+  display:flex;
+}
+.order-quantity-btn {
+  background: none;
+  border: none;
+  color: $brand-green;
+}
 
 .order-total {
   width: 700px;

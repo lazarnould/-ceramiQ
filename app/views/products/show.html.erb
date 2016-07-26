@@ -46,10 +46,11 @@
           <%= f.input :color, collection: real_colors %>
 
           <!-- Choose the sizes in function of the color -->
-          <% real_sizes = []%>
+          <% sizes = []%>
           <% @product.specifications.each do |spec| %>
-            <% real_sizes << spec.size %>
+            <% sizes << spec.size %>
           <%end%>
+          <% real_sizes = sizes.uniq %>
 
           <%= f.input :size, collection: real_sizes %>
           <%= f.input :quantity, :class => 'input-medium' %>
