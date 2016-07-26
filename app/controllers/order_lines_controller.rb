@@ -52,7 +52,7 @@ class OrderLinesController < ApplicationController
 
   def update
     @orderline.update(order_line_params)
-    redirect_to order_path(@orderline.order)
+    redirect_to current_order_path
   end
 
   def destroy
