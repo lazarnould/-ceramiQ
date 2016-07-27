@@ -26,6 +26,12 @@
       <%@order.order_lines.each do |order_line|%>
       <div class="current-order-flexbox">
         <div class="code-article">
+        <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
+          <%= f.error_notification %>
+          <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+          <% end %>
+        <%end%>
           <%=order_line.specification.code_article%>
         </div>
         <div class="order_prod_name">
@@ -67,12 +73,6 @@
         </div>
         <div class="price-order-line">
           <%= order_line.quantity * order_line.price %>€
-          <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
-            <%= f.error_notification %>
-            <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-              <% end %>
-          <%end%>
         </div>
       </div>
       <%end%>
