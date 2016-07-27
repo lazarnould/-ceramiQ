@@ -57,7 +57,7 @@ class OrderLinesController < ApplicationController
 
   def destroy
     @order_line.destroy
-    redirect_to order_path(@orderline.order)
+    redirect_to current_order_path
   end
 
   private
