@@ -182,7 +182,7 @@
                   <%if user_signed_in?%>
                   <div class="navbar-wagon-item">
                     <div class="dropdown">
-                      <a id="navbar-wagon-menu" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.email %>
+                      <a id="navbar-wagon-menu" class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= current_user.email %></a>
                         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                           <%if current_user.profile.nil?%>
                             <li>
