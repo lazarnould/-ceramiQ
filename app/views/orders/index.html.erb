@@ -2,12 +2,12 @@
   <%= flash[:notice] = "You have no orders yet"%>
 <% else %>
   <% @orders .each do |order| %>
-    <%order.orderlines.each do |orderline|%>
+    <%order.order_lines.each do |orderline|%>
       <%= orderline.quantity %>
       <%= orderline.product.name %>
-      <%= orderline.product.specification.size %>
-      <%= orderline.product.specification.color %>
-      <%= orderliner.product.price %>
+      <%= orderline.specification.size %>
+      <%= orderline.specification.color %>
+      <%= orderline.product.price %>
     <%end%>
     <%=order.make_subtotal%>
   <%end%>
