@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   end
 
   resources :products, except: [:new, :create, :index] do
-      resources :order_lines, except: [:destroy, :show, :index]
+      resources :order_lines, only: [:new, :create]
       resources :specifications, except: [:destroy] do
         resources :images, only: [:create, :update]
       end
   end
 
-  resources :order_lines, only: [:destroy]
+  resources :order_lines, only: [:destroy, :edit, :update]
   resources :categories, only: [:destroy, :show]
 
   resources :orders, only: [:show, :create, :index] do

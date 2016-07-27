@@ -44,7 +44,7 @@
           </div>
 
           <div class="order-line-quantity-modifyer">
-            <%= simple_form_for [order_line.product, order_line], method: :put, url: product_order_line_path(order_line.product, order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+            <%= simple_form_for order_line, method: :put, url: order_line_path(order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
               <%= f.error_notification %>
               <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity -= 1) }  %>
               <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
@@ -55,7 +55,7 @@
 
 
           <div class="order-line-quantity-modifyer">
-            <%= simple_form_for [order_line.product, order_line], method: :put, url: product_order_line_path(order_line.product, order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+            <%= simple_form_for order_line, method: :put, url: order_line_path( order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
               <%= f.error_notification %>
               <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity += 1) }  %>
               <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
@@ -69,7 +69,7 @@
           <%= order_line.quantity * order_line.price %>€
           <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
             <%= f.error_notification %>
-            <%= button_tag(type: 'submit') do %>
+            <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
               <% end %>
           <%end%>
