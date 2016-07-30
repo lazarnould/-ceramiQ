@@ -54,7 +54,7 @@
   align-items: center;
   height: 175px;
   margin-top: 15px;
-  background: url('latania-5.jpg');
+  background: image-url('latania-5.jpg');
   background-position: center;
   background-size: contain !important;
   background-repeat: no-repeat;
@@ -113,37 +113,37 @@
 }
 
 .cera-cat-run {
-  background: url('running.jpg');
+  background: image-url('running.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-fitness {
-  background: url('ambafitness.jpg');
+  background: image-url('ambafitness.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-ski {
-  background: url('ceraski.jpg');
+  background: image-url('ceraski.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-canyon {
-  background: url('chamonix-31.jpg');
+  background: image-url('chamonix-31.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-hike {
-  background: url('cerapanorama.jpg');
+  background: image-url('cerapanorama.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-climb {
-  background: url('climbing.jpg');
+  background: image-url('climbing.jpg');
   background-size: cover !important;
   background-position: center;
 }
 .cera-cat-bike {
-  background: url('bike.jpg');
+  background: image-url('bike.jpg');
   background-size: cover !important;
   background-position: center;
 }
@@ -249,65 +249,6 @@
   }
 }
 
-
-/* Ambassadors */
-
-.amba-1 {
-  background: url('running.jpg');
-  background-size: cover !important;
-  background-position: center;
-}
-
-.amba-2 {
-  background: url('chamonix-31.jpg');
-  background-size: cover !important;
-  background-position: bottom;
-}
-.amba-3 {
-  background: url('runsnow.jpeg');
-  background-size: cover !important;
-}
-.amba-4 {
-  background: url('homontagne.jpg');
-  background-size: cover !important;
-  background-position: center;
-}
-.category-card {
-  min-height: 150px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  color: white;
-  position: relative;
-  border: 1px solid #AEA9BF;
-  border-radius: 2px;
-  margin-bottom: 5px;
-
-  h2 {
-    font-weight: lighter;
-    letter-spacing: 8px;
-  }
-}
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
-}
-.card-link:hover{
-  opacity: 0.1;
-}
-
-.card-margin {
-  margin-top: 20px;
-}
 
 .special-prod {
   margin-top: 50px;
