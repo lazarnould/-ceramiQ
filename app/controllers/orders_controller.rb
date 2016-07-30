@@ -29,11 +29,13 @@ class OrdersController < ApplicationController
   end
 
   def current_order
-    last_order = current_user.orders.last
-    if last_order.state == 'pending' && last_order.date == Date.today.to_s
-      @order = last_order
-    else
-      @order == nil
+    if current_user.orders.present?
+      last_order = current_user.orders.last
+      if last_order.state == 'pending' && last_order.date == Date.today.to_s
+        @order = last_order
+      else
+        @order == nil
+      end
     end
   end
 
