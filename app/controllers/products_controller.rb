@@ -90,13 +90,13 @@ class ProductsController < ApplicationController
   def list_types
     types = []
     @products.each do |product|
-      types << product.type
+      types << product.prod_type
       @types = types.uniq
     end
   end
 
   def product_params
-    params.require(:product).permit(:name, :gender, :price_cents, :category, :description, :season, :photo, :photo_cache, :type)
+    params.require(:product).permit(:name, :gender, :price_cents, :category, :description, :season, :photo, :photo_cache, :prod_type)
   end
 
   def specification_params
