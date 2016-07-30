@@ -71,7 +71,7 @@ class CategoriesController < ApplicationController
   def list_types
     types = []
     @products.each do |product|
-      types << product.type
+      types << product.prod_type
       @types = types.uniq
     end
   end
