@@ -68,7 +68,7 @@
     <%if @category.photo == nil%>
     <div class="cat-banner cat-banner-empty"></div>
     <%else%>
-    <div class="cat-banner" style="background-image: url(<%= cl_image_path @category.photo %>);"></div>
+    <div class="cat-banner" style="background: image-url(<%= cl_image_path @category.photo %>);"></div>
     <%end%>
 
     <div class="container container-indexes">
@@ -82,7 +82,7 @@
           <div class="col-xs-12 col-md-3 cat-prod-link">
             <%= link_to product_path(product), style: "text-decoration:none;" do%>
               <div class="cat-prod">
-                <div class="cat-prod-grid-banner" style="background-image: url(<%= cl_image_path product.photo%>)"></div>
+                <div class="cat-prod-grid-banner" style="background: image-url(<%= cl_image_path product.photo%>)"></div>
                 <div class="cat-prod-grid-colors">
                   <%= colors_by_prod.count%> Colours
                 </div>
