@@ -64,7 +64,7 @@ ul {
 }
 
 .cat-banner-empty {
-  background: url('qallover.png');
+  background: image-url('qallover.png');
 }
 
 .container-indexes{
@@ -127,7 +127,7 @@ ul {
 
 
 .prod-men-banner{
-  background-image: url('cerapanorama.jpg');
+  background-image: image-url('cerapanorama.jpg');
   background-position: center-top;
   background-size: cover !important;
   margin-bottom: 25px;
@@ -135,7 +135,7 @@ ul {
 }
 
 .prod-women-banner{
-  background-image: url('chamonix-18.jpg');
+  background-image: image-url('chamonix-18.jpg');
   background-position: center-top;
   background-size: cover !important;
   margin-bottom: 25px;
@@ -143,7 +143,7 @@ ul {
 }
 
 .prod-accessories-banner{
-  background-image: url('productshot.jpg');
+  background-image: image-url('productshot.jpg');
   background-position: center-top;
   background-size: cover !important;
   margin-bottom: 25px;
