@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-xs-1 prod-showcase-images-colors">
             <% if @photos.count == 1%>
-              <%= cl_image_tag @photos.photo, height: 60, width: 60, crop: :fill %>
+              <%= cl_image_tag @photos.first, height: 60, width: 60, crop: :fill %>
             <%else%>
               <% @photos.each do |p|%>
                 <%= cl_image_tag p, height: 60, width: 60, crop: :fill %>
