@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
   end
 
   def show_men
-    @products = @category.products.all.select {|product| product.gender == "men"}
+    @products = @category.products.all.select {|product| product.gender == "Men"}
     list_types
     colors
   end
