@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index_men
-    @products = Product.all.select {|product| product.gender == "men"}
+    @products = Product.all.select {|product| product.gender == "Men"}
     @gender = "Men"
     list_types
     colors
