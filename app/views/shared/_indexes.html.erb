@@ -66,9 +66,9 @@
   <div class="right-part">
 
     <%if @category.photo == nil%>
-    <div class="cat-banner cat-banner-empty"></div>
+      <div class="cat-banner cat-banner-empty"></div>
     <%else%>
-    <div class="cat-banner"><%= cl_image_tag @photos.first, height: 85, width: 1065, crop: :fill %></div>
+      <div class="cat-banner"><%= cl_image_tag @category.photo, height: 385, width: 1065, crop: :fill %></div>
     <%end%>
 
     <div class="container container-indexes">
