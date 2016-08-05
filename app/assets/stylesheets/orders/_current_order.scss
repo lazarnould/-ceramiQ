@@ -29,8 +29,9 @@
 
 
 .full-basket {
-  width:500px;
+  width:600px;
   padding: 49px 0;
+  margin: auto;
   hr {
     color: #EEE;
     margin-bottom: 30px;
@@ -52,7 +53,7 @@
   align-items: center;
 }
 .basket-lines {
-  min-width: 500px;
+  min-width: 600px;
   margin: auto;
 }
 
@@ -70,7 +71,7 @@
   color: $brand-green;
 }
 
-.order-total {
+.order-total-delivery {
   width: 700px;
   display: flex;
   justify-content: flex-start;
@@ -78,11 +79,21 @@
   margin-bottom:20px;
 }
 
+.order-total {
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  margin-bottom:20px;
+  margin-left: 190px;
+}
+
 
 .current-order-delivery-infos{
   width:500px;
   padding: 49px 40px;
-  margin-right: 200px;
+  margin-right: 20px;
+  margin-left: 50px;
   hr {
     color: #EEE;
     margin-bottom: 10px;
@@ -132,5 +143,10 @@
   letter-spacing: 6px;
   display:flex;
   justify-content: center;
+  align-items: center;
+}
+
+.order-flexbox {
+  display: flex;
   align-items: center;
 }

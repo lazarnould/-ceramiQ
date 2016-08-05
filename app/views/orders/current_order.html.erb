@@ -15,76 +15,72 @@
     </div>
     <hr>
     <div class="basket-lines">
-      <div class="order-lines-titles">
-        <div class="subtitles"><h4>Code Article</h4></div>
-        <div class="subtitles"><h4>Name</h4></div>
-        <div class="subtitles"><h4>Color</h4></div>
-        <div class="subtitles"><h4>Size</h4></div>
-        <div class="subtitles"><h4>Quantity</h4></div>
-        <div class="subtitles"><h4>Price</h4></div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><h4>Code Article</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>Color</h4></th>
+            <th><h4>Size</h4></th>
+            <th><h4>Quantity</h4></th>
+            <th><h4>Price</h4></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@order.order_lines.each do |order_line|%>
+            <tr>
+              <td class="order-flexbox">
+                <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
+                  <%= f.error_notification %>
+                  <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <% end %>
+                <%end%>
+                <%=order_line.specification.code_article%>
+              </td>
+              <td><%=order_line.product.name%></td>
+              <td><%=order_line.specification.color%></td>
+              <td><%=order_line.specification.size%></td>
+              <td class="order-flexbox">
+                <div class="order-line-quantity-show">
+                  <%=order_line.quantity%>
+                </div>
+
+                <div class="order-line-quantity-modifyer">
+                  <%= simple_form_for order_line, method: :put, url: order_line_path(order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity -= 1) }  %>
+                    <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                      <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+
+
+                <div class="order-line-quantity-modifyer">
+                  <%= simple_form_for order_line, method: :put, url: order_line_path( order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity += 1) }  %>
+                    <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+              <td><%= order_line.quantity * order_line.price %>€</td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <hr>
+      <div class="order-total">
+        Total: <%=@order.make_subtotal * 100%>€
       </div>
-      <%@order.order_lines.each do |order_line|%>
-      <div class="current-order-flexbox">
-        <div class="code-article">
-        <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
-          <%= f.error_notification %>
-          <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-          <% end %>
+      <div class="order-total">
+        <%=link_to new_order_delivery_info_path(@order) do %>
+        <div class="btn btn-success">Checkout</div>
         <%end%>
-          <%=order_line.specification.code_article%>
-        </div>
-        <div class="order_prod_name">
-          <%=order_line.product.name%>
-        </div>
-        <div class="order-line-color">
-          <%=order_line.specification.color%>
-        </div>
-        <div class="order-line-size">
-          <%=order_line.specification.size%>
-        </div>
-        <div class="order-line-quantity">
-
-          <div class="order-line-quantity-show">
-            <%=order_line.quantity%>
-          </div>
-
-          <div class="order-line-quantity-modifyer">
-            <%= simple_form_for order_line, method: :put, url: order_line_path(order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity -= 1) }  %>
-              <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-minus-circle" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
-
-
-          <div class="order-line-quantity-modifyer">
-            <%= simple_form_for order_line, method: :put, url: order_line_path( order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity += 1) }  %>
-              <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
-
-        </div>
-        <div class="price-order-line">
-          <%= order_line.quantity * order_line.price %>€
-        </div>
       </div>
-      <%end%>
-    </div>
-    <hr>
-    <div class="order-total">
-      Total: <%=@order.make_subtotal * 100%>€
-    </div>
-    <div class="order-total">
-      <%=link_to new_order_delivery_info_path(@order) do %>
-      <div class="btn btn-success">Checkout</div>
-      <%end%>
     </div>
   </div>
 <%else%>
@@ -105,7 +101,7 @@
         <p><%=@order.delivery_info.country%></p>
       </div>
       <hr>
-      <div class="order-total delivery-btn">
+      <div class="order-total-delivery delivery-btn">
         <%=  link_to edit_order_delivery_info_path(@order.id, @order.delivery_info.id) do %>
           <div class="btn btn-success">Update</div>
         <%end%>
@@ -117,73 +113,84 @@
       </div>
       <hr>
       <div class="basket-lines">
-        <div class="order-lines-titles">
-          <div class="subtitles"><h4>Code Article</h4></div>
-          <div class="subtitles"><h4>Name</h4></div>
-          <div class="subtitles"><h4>Color</h4></div>
-          <div class="subtitles"><h4>Size</h4></div>
-          <div class="subtitles"><h4>Price</h4></div>
-        </div>
-        <%@order.order_lines.each do |order_line|%>
-        <div class="current-order-flexbox">
-          <div class="code-article">
-            <%=order_line.specification.code_article%>
-          </div>
-          <div class="order_prod_name">
-            <%=order_line.product.name%>
-          </div>
-          <div class="order-line-color">
-            <%=order_line.specification.color%>
-          </div>
-          <div class="order-line-size">
-            <%=order_line.specification.size%>
-          </div>
-          <div class="order-line-quantity">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><h4>Code Article</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>Color</h4></th>
+            <th><h4>Size</h4></th>
+            <th><h4>Quantity</h4></th>
+            <th><h4>Price</h4></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@order.order_lines.each do |order_line|%>
+            <tr>
+              <td class="order-flexbox">
+                <%= simple_form_for order_line, method: :delete, url: order_line_path(order_line) do |f|%>
+                  <%= f.error_notification %>
+                  <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <% end %>
+                <%end%>
+                <%=order_line.specification.code_article%>
+              </td>
+              <td><%=order_line.product.name%></td>
+              <td><%=order_line.specification.color%></td>
+              <td><%=order_line.specification.size%></td>
+              <td class="order-flexbox">
+                <div class="order-line-quantity-show">
+                  <%=order_line.quantity%>
+                </div>
 
-          <div class="order-line-quantity-show">
-            <%=order_line.quantity%>
-          </div>
-
-          <div class="order-line-quantity-modifyer">
-            <%= simple_form_for order_line, method: :put, url: order_line_path(order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity -= 1) }  %>
-              <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-minus-circle" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
+                <div class="order-line-quantity-modifyer">
+                  <%= simple_form_for order_line, method: :put, url: order_line_path(order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity -= 1) }  %>
+                    <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                      <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
 
 
-          <div class="order-line-quantity-modifyer">
-            <%= simple_form_for order_line, method: :put, url: order_line_path( order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity += 1) }  %>
-              <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </div>
-
-        </div>
-          <div class="price-order-line">
-            <%= order_line.quantity * order_line.price %>€
-          </div>
-        </div>
-        <%end%>
-      </div>
+                <div class="order-line-quantity-modifyer">
+                  <%= simple_form_for order_line, method: :put, url: order_line_path( order_line), :html => {class: 'form-inline order-2 text-center'} do |f| %>
+                    <%= f.error_notification %>
+                    <%= f.input :quantity, :as => :hidden, :input_html => { :value => (order_line.quantity += 1) }  %>
+                    <%= button_tag(type: 'submit', class: 'order-quantity-btn') do %>
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+              <td><%= order_line.quantity * order_line.price %>€</td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
       <hr>
       <div class="order-total">
-        Total: <%=@order.make_subtotal * 100%>€
+        <%= form_tag order_payments_path(@order) do %>
+          <article>
+            <label class="amount">
+              <span>Amount: <%= humanized_money_with_symbol((@order.make_subtotal) * 100) %></span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="My Order"
+            data-description="Ceramiq order <%= @order.id %>"
+            data-amount="<%= (@order.make_subtotal) * 10000 %>"
+            data-currency="EUR"></script>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="full-checkout-btn">
-      <%=link_to new_order_payment_path(@order) do %>
-        <div class="checkout-btn">Checkout</div>
-      <%end%>
-  </div>
 
 
 
