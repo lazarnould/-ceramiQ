@@ -29,9 +29,9 @@
 
 
 .full-basket {
-  width:700px;
-  margin: 0 auto;
+  width:600px;
   padding: 49px 0;
+  margin: auto;
   hr {
     color: #EEE;
     margin-bottom: 30px;
@@ -53,7 +53,7 @@
   align-items: center;
 }
 .basket-lines {
-  min-width: 500px;
+  min-width: 600px;
   margin: auto;
 }
 
@@ -71,23 +71,32 @@
   color: $brand-green;
 }
 
-.order-total {
+.order-total-delivery {
   width: 700px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   font-weight: bolder;
   margin-bottom:20px;
 }
 
+.order-total {
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  margin-bottom:20px;
+  margin-left: 190px;
+}
+
 
 .current-order-delivery-infos{
-  width:700px;
-  margin: 0 auto;
-
-  padding: 49px 0;
+  width:500px;
+  padding: 49px 40px;
+  margin-right: 20px;
+  margin-left: 50px;
   hr {
     color: #EEE;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 
@@ -108,4 +117,36 @@
 }
 .code-article {
   display: flex;
+}
+
+.full-order-flexbox {
+  display: flex;
+}
+
+.full-checkout-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+  margin-bottom: 30px;
+}
+
+.checkout-btn {
+  width: 192px;
+  height: 174px;
+  -webkit-clip-path: polygon(24% 0, 76% 0, 100% 53%, 100% 52%, 78% 100%, 25% 100%, 0 54%, 0 54%);
+  background-color: $brand-green;
+  color: white;
+  letter-spacing: 6px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-flexbox {
+  display: flex;
+  align-items: center;
 }
