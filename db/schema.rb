@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811100818) do
+ActiveRecord::Schema.define(version: 20160811150704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,13 +81,14 @@ ActiveRecord::Schema.define(version: 20160811100818) do
   add_index "order_lines", ["specification_id"], name: "index_order_lines_on_specification_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.string   "state"
-    t.integer  "amount_cents", default: 0, null: false
+    t.integer  "amount_cents", default: 0,     null: false
     t.json     "payment"
     t.string   "date"
+    t.boolean  "delivered",    default: false
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -117,7 +118,6 @@ ActiveRecord::Schema.define(version: 20160811100818) do
     t.integer  "street_number"
     t.integer  "phone_number"
     t.string   "phone_number_prefix"
-    t.boolean  "admin"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "user_id"
