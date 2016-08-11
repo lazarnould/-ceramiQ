@@ -20,7 +20,7 @@ class SpecificationsController < ApplicationController
     @specification.product = @product
 
     if @specification.save
-      flash[:notice] = "#{@specification.product.name} in #{@specification.color} is now created, please add some stock"
+      flash[:notice] = "#{@specification.product.name} in #{@specification.color} is now created, please add an image"
       redirect_to product_specification_path(@specification.product, @specification)
     else
       flash[:notice] = "A problem occured, Please try again"

@@ -21,6 +21,8 @@ gem 'country_select'
 gem 'autoprefixer-rails'
 gem 'cloudinary'
 gem 'carrierwave'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -29,8 +31,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-
-
 end
 
 group :production do
