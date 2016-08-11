@@ -21,7 +21,8 @@ class PaymentsController < ApplicationController
 
   @order.update(payment: charge.to_json, state: 'paid')
   @order.order_lines.each do |ol|
-    ol.specification.quantity -= ol.quantity
+    spec = ol.specification
+    spec.update(quantity: spec.quantity -= ol.quantity)
   end
   redirect_to order_path(@order)
 
